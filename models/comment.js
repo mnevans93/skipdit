@@ -12,6 +12,8 @@ const commentSchema = new Schema({
         ref: 'Comments'
     }],
     isReply: {Type: Boolean}
-})
+    },
+    {timestamps: true}
+)
 
 module.exports = model('Comment', commentSchema)
