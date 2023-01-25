@@ -1,17 +1,17 @@
-export default function UserPage(){
+export default function UserPage(props){
     
     return(
         <>
         {
-            user?(
+            props.users?(
                 <>
-                <div className={style.userinfo}>
-                    <h1>{user.username}</h1>
-                    <h1>{user.email}</h1>
+                <div>
+                    <h1>{props.user.username}</h1>
+                    <h1>{props.user.email}</h1>
                 </div>
                 <ul>
                 {
-                    user.subSkipdit
+                    props.user.subSkipdit
                     .map((subSkipdit) =>{
                         return(
                             <li key = {subSkipdit._id}>
@@ -23,7 +23,7 @@ export default function UserPage(){
                 }
                 </ul>
                 </>
-            ):<h1></h1>
+            ):<h1>No User</h1>
         }
         
     
