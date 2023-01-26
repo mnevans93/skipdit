@@ -29,14 +29,17 @@ useEffect(() =>{
 },[])
 
 return(
-  <Routes>
-    <Route path='/' element={<PostPage posts={posts}/>} />
-    <Route path='/hel' element={<UserPage user={user}/>} />
-    <Route path='/aye' element={<LoginPage />} />
-    <Route path='/a' element={<SignupPage />} />
-    <Route path='/d' element={<DashboardPage />} />
-    <Route path='/ff' element={<SubOverviewPage />} />
-  </Routes>
+  <div className='App'>
+    <NavBar />
+    <Routes>
+      <Route path='/' element={<PostPage posts={posts}/>} />
+      <Route path='/hel' element={<UserPage user={user}/>} />
+      <Route path='/aye' element={<LoginPage />} />
+      <Route path='/a' element={<SignupPage />} />
+      <Route path='/d' element={<DashboardPage />} />
+      <Route path='/ff' element={<SubOverviewPage />} />
+    </Routes>
+  </div>
 )
 
 }

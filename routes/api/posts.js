@@ -1,5 +1,4 @@
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
 const dataController = require('../../controllers/api/posts')
 const checkUserStatus = require('../../config/checkUserStatus')
 

@@ -1,7 +1,7 @@
 // import { useState, useEffect} from 'react'
 // import styles from './DashboardPage.module.scss'
 // import { Link, useNavigate } from 'react-router-dom'
-// import CreatePost from '../components/CreatePost/CreatePost'
+// import CreatePostForm from '../components/CreatePostForm/CreatePostForm'
 // import FeedSorter from '../components/FeedSorter/FeedSorter'
 // import PostList from '../components/PostList/PostList'
 // import HomeCard from '../components/HomeCard/HomeCard'
@@ -24,7 +24,7 @@ export default function DashboardPage({}) {
     
     return(
         <>
-            <CreatePost />
+            <CreatePostForm />
             {/* <FeedSorter /> */}
             <SubList />
             {/* <PostList /> */}

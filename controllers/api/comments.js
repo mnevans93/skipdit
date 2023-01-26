@@ -5,6 +5,7 @@ const dataController = {
         try {
             const comments = await Comment.find({})
             if(!comments) throw new Error()
+            res.locals.data.comments = comments
             next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
