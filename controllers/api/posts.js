@@ -1,9 +1,9 @@
-const post = require('../../models/post')
+const Post = require('../../models/post')
 
 const dataController = {
     async index (req, res, next) {
         try {
-            const posts = await post.find({})
+            const posts = await Post.find({})
             if (!posts) throw new Error()
             res.locals.data.posts = posts
             next()
@@ -13,7 +13,7 @@ const dataController = {
     },
     async delete (req, res, next) {
         try {
-            await post.findByIdAndDelete(req.body._id)
+            await Post.findByIdAndDelete(req.body._id)
             next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
@@ -21,7 +21,7 @@ const dataController = {
     },
     async update (req, res, next) {
         try {
-            const post = await post.findByIdAndUpdate(req.body._id, req.body, { new: true })
+            const post = await Post.findByIdAndUpdate(req.body._id, req.body, { new: true })
             if (!post) throw new Error()
             res.locals.data.post = post
             next()
@@ -31,7 +31,7 @@ const dataController = {
     },
     async create (req, res, next) {
         try {
-            const post = await post.create(req.body)
+            const post = await Post.create(req.body)
             if (!post) throw new Error()
             res.locals.data.post = post
             next()
@@ -41,7 +41,7 @@ const dataController = {
     },
     async show (req, res, next) {
         try {
-            const post = await post.findById(req.body._id)
+            const post = await Post.findById(req.body._id)
             if (!post) throw new Error()
             res.locals.data.post = post
             next()
