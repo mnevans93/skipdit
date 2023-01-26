@@ -12,6 +12,8 @@ const postSchema = new Schema({
         ref: 'Users'
     },
     votes: {Type: Number}
-})
+    },
+    {timestamps: true}
+)
 
 module.exports = model('Post', postSchema)
