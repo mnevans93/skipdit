@@ -7,8 +7,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
 export default function NavBar ({ user, setUser, page, link, setLink, navigate, handleClick }) {
-  const [accounts, setAccounts] = useState(user.accounts.map(account =>
-    <NavDropdown.Item key={account._id} href={`/accounts/${account._id}`} onClick={(e) => handleClick(e, `/accounts/${account._id}`)}>{account.nickname}</NavDropdown.Item>
+  const [subSkipdits, setSubSkipdits] = useState(user.subSkipdits.map(subSkipdit =>
+    <NavDropdown.Item key={subSkipdit._id} href={`/subSkipdits/${subSkipdit._id}`} onClick={(e) => handleClick(e, `/subSkipdits/${subSkipdit._id}`)}>{subSkipdit.nickname}</NavDropdown.Item>
   ))
 
   useEffect(() => {
@@ -16,8 +16,8 @@ export default function NavBar ({ user, setUser, page, link, setLink, navigate, 
   }, [link])
 
   useEffect(() => {
-    setAccounts(user.accounts.map(account =>
-      <NavDropdown.Item key={account._id} href={`/accounts/${account._id}`} onClick={(e) => handleClick(e, `/accounts/${account._id}`)}>{account.nickname}</NavDropdown.Item>
+    setSubSkipdits(user.subSkipdits.map(sub =>
+      <NavDropdown.Item key={subSkipdit._id} href={`/subSkipdits/${subSkipdit._id}`} onClick={(e) => handleClick(e, `/subSkipdits/${subSkipdit._id}`)}>{subSkipdit.nickname}</NavDropdown.Item>
     ))
   }, [user])
 
@@ -54,9 +54,9 @@ export default function NavBar ({ user, setUser, page, link, setLink, navigate, 
                     title='My Stuff'
                     id='offcanvasNavbarDropdown-expand-expand'
                   >
-                    {accounts}
+                    {subSkipdits}
                     <hr />
-                    <NavDropdown.Item href='/accounts/new' onClick={(e) => handleClick(e, '/accounts/new')}>Add a new account</NavDropdown.Item>
+                    <NavDropdown.Item href='/subSkipdits/new' onClick={(e) => handleClick(e, '/subSkipdits/new')}>Add a new account</NavDropdown.Item>
                   </NavDropdown>
                   <Nav.Link href='/options' onClick={(e) => handleClick(e, '/options')}>User Options</Nav.Link>
                   <Nav.Link href='/welcome' onClick={(e) => handleLogout(e)}>Logout</Nav.Link>
