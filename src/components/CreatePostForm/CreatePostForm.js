@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from './CreatePostForm.css'
+import styles from './CreatePostForm.scss'
 
 export default function CreatePostForm ({}) {
     const [ post , setPost ] = useState({
@@ -9,7 +9,11 @@ export default function CreatePostForm ({}) {
 
    const handleChange = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value })
-  } 
+    } 
+
+    const createPost = () => {
+      
+    }
  
   return (
     <>

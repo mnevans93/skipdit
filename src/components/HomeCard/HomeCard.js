@@ -1,18 +1,18 @@
 import React from 'react'
 // import './HomeCard.css'
 
-function HomeCards() {
+function HomeCard() {
     return(
-<div className={'HomeCardConatiner'}>
-    <div className={'HomeCard'}>
+<div className='HomeCardContainer'>
+    <div className='HomeCard'>
         <h2 className="HomeTitle">Home</h2>
         <p className="HomeBlurb">Your personal Skipdit frontpage. Come here to check in with your favorite communities.</p>
-        <div className={'HomeCardButtons'}>
+        <div className='HomeCardButtons'>
             <button />
             <button />
         </div>
     </div>
-    <div className={'PolicyCard'}>
+    <div className='PolicyCard'>
         <ul>
             <li>User Agreement</li>
             <li>Privacy Policy</li>

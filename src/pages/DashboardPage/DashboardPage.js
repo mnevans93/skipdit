@@ -1,11 +1,11 @@
-// import { useState, useEffect} from 'react'
+import { useState, useEffect} from 'react'
 // import styles from './DashboardPage.module.scss'
 // import { Link, useNavigate } from 'react-router-dom'
-// import CreatePostForm from '../components/CreatePostForm/CreatePostForm'
+import CreatePostForm from '../../components/CreatePostForm/CreatePostForm'
 // import FeedSorter from '../components/FeedSorter/FeedSorter'
 // import PostList from '../components/PostList/PostList'
-// import HomeCard from '../components/HomeCard/HomeCard'
-// import SubList from '../components/SubList/SubList'
+import HomeCard from '../../components/HomeCard/HomeCard'
+import SubList from '../../components/SubList/SubList'
 
 export default function DashboardPage({}) {
     // variables

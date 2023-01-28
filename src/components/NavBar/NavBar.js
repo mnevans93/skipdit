@@ -16,7 +16,7 @@ export default function NavBar ({ user, setUser, page, link, setLink, navigate, 
   }, [link])
 
   useEffect(() => {
-    setSubSkipdits(user.subSkipdits.map(sub =>
+    setSubSkipdits(user.subSkipdits.map(subSkipdit =>
       <NavDropdown.Item key={subSkipdit._id} href={`/subSkipdits/${subSkipdit._id}`} onClick={(e) => handleClick(e, `/subSkipdits/${subSkipdit._id}`)}>{subSkipdit.nickname}</NavDropdown.Item>
     ))
   }, [user])

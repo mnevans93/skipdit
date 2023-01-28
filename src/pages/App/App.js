@@ -6,6 +6,7 @@ import PostPage from "../PostPage/PostPage";
 import DashboardPage from "../DashboardPage/DashboardPage";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
+import NavBar from "../../components/NavBar/NavBar"
 
 
 export default function App() {

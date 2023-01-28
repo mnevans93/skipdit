@@ -1,7 +1,7 @@
 import React from 'react'
 // import './SubHeader.scss'
 
-function SubHeader() {
+function SubHeader(props) {
   return (
     <div className='SubHeaderContainer'>
         <h1 className='SubHeaderTitle'>`${props.title}`</h1>
