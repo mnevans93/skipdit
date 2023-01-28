@@ -1,6 +1,5 @@
 import styles from './SubList.scss'
 import SubListItem from '../SubListItem/SubListItem'
-import { subscribe } from '../../../routes/api/comments'
 
 export default function SubList ({
     subs,
