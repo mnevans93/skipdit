@@ -7,9 +7,9 @@ export default function SubListItem({
 }) {
     return (
         <li className={styles.li}>
-            <h2>{name}</h2>
-            <a href></a>
-            <h4>{posts}: 99001</h4>
+            <h2>{sub.name}</h2>
+            <a href={sub.url}>{sub.url}</a>
+            <h4>posts: 9001</h4>
         </li>
     )
 }

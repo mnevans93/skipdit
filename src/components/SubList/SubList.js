@@ -11,7 +11,7 @@ export default function SubList ({
             {
                 subs.length
                     ? subs.map(sub => (
-                        <Sub
+                        <SubListItem
                             key={sub._id}
                             sub={sub}
                             link={link}
