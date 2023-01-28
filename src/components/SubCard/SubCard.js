@@ -1,10 +1,10 @@
 import React from 'react'
 // import './SubCard.css'
 
-functionSubCards() {
+function SubCards(props) {
     return(
 <div className={'SubCardContainer'}>
-    <h4 className="SubCardHeader">props.title</h4>
+    <h4 className="SubCardHeader">`${props.title}`</h4>
     <div className={'AboutBlurb'}>
     <p classsName="AboutSub"></p>
     {/* Created X date */}
