@@ -7,9 +7,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
 export default function NavBar ({ user, setUser, page, link, setLink, navigate, handleClick }) {
-  const [subSkipdits, setSubSkipdits] = useState(user.subSkipdits.map(subSkipdit =>
-    <NavDropdown.Item key={subSkipdit._id} href={`/subSkipdits/${subSkipdit._id}`} onClick={(e) => handleClick(e, `/subSkipdits/${subSkipdit._id}`)}>{subSkipdit.nickname}</NavDropdown.Item>
-  ))
+  const [subSkipdits, setSubSkipdits] = useState(
+    user ? (user.subSkipdits.map(subSkipdit =>
+    <NavDropdown.Item key={subSkipdit._id} href={`/subSkipdits/${subSkipdit._id}`} onClick={(e) => handleClick(e, `/subSkipdits/${subSkipdit._id}`)}>{subSkipdit.nickname}</NavDropdown.Item>))
+    : []
+  )
 
   useEffect(() => {
     navigate(link)

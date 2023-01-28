@@ -16,6 +16,7 @@ const dataController = {
       next()
     } catch (e) {
       console.log('Account creation error')
+      console.log(e)
       res.status(400).json(e)
     }
   },

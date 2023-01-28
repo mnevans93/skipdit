@@ -1,7 +1,7 @@
 import LoginForm from '../../components/LoginForm/LoginForm'
 
-export default function LoginPage ( props ) {
+export default function LoginPage ( {navigate} ) {
   return (
-    <LoginForm />
+    <LoginForm navigate={navigate} />
   )
 }

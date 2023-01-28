@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose')
 
 const subSkipditSchema = new Schema({
-    subName: {type: String, required: true},
+    subName: {type: String, required: true, unique: true},
     subPosts: [{
         type: Schema.Types.ObjectId,
         ref: 'Posts'

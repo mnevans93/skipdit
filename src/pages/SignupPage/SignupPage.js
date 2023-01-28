@@ -1,7 +1,7 @@
 import SignupForm from '../../components/SignupForm/SignupForm'
 
-export default function SignupPage ( props ) {
+export default function SignupPage ( {navigate} ) {
   return (
-    <SignupForm />
+    <SignupForm navigate={navigate} />
   )
 }
