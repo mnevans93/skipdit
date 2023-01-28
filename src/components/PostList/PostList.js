@@ -1,4 +1,4 @@
-import post from '../PostListItem/PostListItem'
+import Post from '../PostListItem/PostListItem'
 
 export default function PostList ({
   posts,
@@ -10,7 +10,7 @@ export default function PostList ({
       {
             posts.length
               ? posts.map(post => (
-                <Post
+                <Post List Item
                   key={post._id}
                   post={post}
                   updatePost={updatePost}
