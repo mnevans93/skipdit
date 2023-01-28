@@ -1,3 +1,4 @@
+import post from '../PostListItem/PostListItem'
 
 export default function PostList ({
   posts,
