@@ -1,4 +1,3 @@
-import { JsonWebTokenError } from "jsonwebtoken";
 import { useState } from "react";
 export default function NewCommentForm (){
     
@@ -29,4 +28,21 @@ export default function NewCommentForm (){
     const handleChange = (evt) => {
         setNewComment({...newComment, [evt.target.name]: evt.target.value})
     }
+    return(
+        <>
+        {
+            user ?(
+                <main>
+                {
+                    <>
+                <h1>Comment as {user._id}</h1>
+                 <input value={newComment.body} onChange={handleChange} name="body" placeholder="What are your thoughts?"></input><br/>
+                 <button onClick={() => createComment() }>Comment</button>
+                 </>   
+                }
+                </main>
+            ):<h1>Login in to Comment</h1>
+        }
+        </>
+    )
 }
