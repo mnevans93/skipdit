@@ -7,67 +7,76 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
 export default function NavBar ({ user, setUser, page, link, setLink, navigate, handleClick }) {
-  const [subSkipdits, setSubSkipdits] = useState(
-    user ? (user.subSkipdits.map(subSkipdit =>
-    <NavDropdown.Item key={subSkipdit._id} href={`/subSkipdits/${subSkipdit._id}`} onClick={(e) => handleClick(e, `/subSkipdits/${subSkipdit._id}`)}>{subSkipdit.nickname}</NavDropdown.Item>))
-    : []
-  )
+  const [subSkipdits, setSubSkipdits] = useState([])
 
   useEffect(() => {
-    navigate(link)
+    if (link) navigate(link)
   }, [link])
 
+  const getSubs = () => {
+    if (user) {
+      setSubSkipdits(user.subSkipdits.map(subSkipdit =>
+        <NavDropdown.Item key={subSkipdit._id} href={`/subSkipdits/${subSkipdit._id}`} onClick={(e) => handleClick(e, `/subSkipdits/${subSkipdit._id}`)}>{subSkipdit.nickname}</NavDropdown.Item>)
+    )}
+  }
+
   useEffect(() => {
-    setSubSkipdits(user.subSkipdits.map(subSkipdit =>
-      <NavDropdown.Item key={subSkipdit._id} href={`/subSkipdits/${subSkipdit._id}`} onClick={(e) => handleClick(e, `/subSkipdits/${subSkipdit._id}`)}>{subSkipdit.nickname}</NavDropdown.Item>
-    ))
+    // getSubs()
   }, [user])
 
   const handleLogout = (e) => {
     e.preventDefault()
     logOut()
     setUser(null)
-    setLink('/welcome')
+    setLink('/')
   }
 
   return (
-    user
-      ? <div className='main-nav'>
-        <Navbar fixed="top" bg='primary' expand='false' className='mb-3' collapseOnSelect='true'>
-          <Container fluid>
-            <Navbar.Brand>{page}</Navbar.Brand>
-            <Navbar.Toggle aria-controls='offcanvasNavbar-expand-expand' />
-            <Navbar.Offcanvas
-              id='offcanvasNavbar-expand-expand'
-              aria-labelledby='offcanvasNavbarLabel-expand-expand'
-              placement='end'
-              bg='primary'
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id='offcanvasNavbarLabel-expand-expand'>
-                  {user.name}
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <hr />
-              <Offcanvas.Body>
-                <Nav className='justify-content-end flex-grow-1 pe-3'>
-                  <Nav.Link href='/dashboard' onClick={(e) => handleClick(e, '/dashboard')}>My Dashboard</Nav.Link>
-                  <NavDropdown
-                    title='My Stuff'
-                    id='offcanvasNavbarDropdown-expand-expand'
-                  >
-                    {subSkipdits}
-                    <hr />
-                    <NavDropdown.Item href='/subSkipdits/new' onClick={(e) => handleClick(e, '/subSkipdits/new')}>Add a new account</NavDropdown.Item>
-                  </NavDropdown>
-                  <Nav.Link href='/options' onClick={(e) => handleClick(e, '/options')}>User Options</Nav.Link>
-                  <Nav.Link href='/welcome' onClick={(e) => handleLogout(e)}>Logout</Nav.Link>
-                </Nav>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
-        </Navbar>
-        </div>
-      : ''
+    <div className='main-nav'>
+      <Navbar fixed="top" bg='primary' expand='false' className='mb-3' collapseOnSelect='true'>
+        <Container fluid>
+          <Navbar.Brand><Nav.Link href='/' onClick={(e) => handleClick(e, '/')}>Skipdit</Nav.Link></Navbar.Brand>
+          <Navbar.Toggle aria-controls='offcanvasNavbar-expand-expand' />
+          <Navbar.Offcanvas
+            id='offcanvasNavbar-expand-expand'
+            aria-labelledby='offcanvasNavbarLabel-expand-expand'
+            placement='end'
+            bg='primary'
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title id='offcanvasNavbarLabel-expand-expand'>
+                {user ? user.username : 'Login or Sign Up Below'}
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <hr />
+            <Offcanvas.Body>
+              <Nav className='justify-content-end flex-grow-1 pe-3'>
+                <Nav.Link href='/' onClick={(e) => handleClick(e, '/')}>Browse Communities</Nav.Link>
+                {user ? <Nav.Link href='/dashboard' onClick={(e) => handleClick(e, '/dashboard')}>My Dashboard</Nav.Link> : ''}
+                {user ? <NavDropdown
+                  title='My Communities'
+                  id='offcanvasNavbarDropdown-expand-expand'
+                >
+                  {subSkipdits}
+                  <hr />
+                  <NavDropdown.Item href='/s/new' onClick={(e) => handleClick(e, '/s/new')}>Start a New Community</NavDropdown.Item>
+                </NavDropdown> : ''}
+                {user ? 
+                  <>
+                    <Nav.Link href={`/users/${user._id}`} onClick={(e) => handleClick(e, `/users/${user._id}`)}>User Options</Nav.Link>
+                    <Nav.Link href='/' onClick={(e) => handleLogout(e)}>Logout</Nav.Link>
+                  </>
+                :
+                  <>
+                    <Nav.Link href='/login' onClick={(e) => handleClick(e, '/login')}>Login</Nav.Link>
+                    <Nav.Link href='/signup' onClick={(e) => handleClick(e, '/signup')}>Sign Up</Nav.Link>
+                  </>
+                }
+              </Nav>
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+        </Container>
+      </Navbar>
+    </div>
   )
 }

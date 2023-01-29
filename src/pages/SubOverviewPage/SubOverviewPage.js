@@ -20,14 +20,14 @@ export default function SubOverviewPage({}) {
     
     return(
         <>
-        <SubHeader />
-        <CreatePostForm />
-        <div className="SubOverviewPage">
-            {/* <FeedSorter /> */}
-            <PostList />
-            <SubCard />
-        </div>
+            <SubHeader />
+            <CreatePostForm />
+            <div className="SubOverviewPage">
+                {/* <FeedSorter /> */}
+                {/* <PostList /> */}
+                <SubCard />
+            </div>
         </>
     )
-    }
+}
     

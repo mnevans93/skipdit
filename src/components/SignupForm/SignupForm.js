@@ -5,18 +5,14 @@ import validInput from '../../utilities/check-input'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-export default function SignUpForm ({ setUser, link, navigate, handleClick }) {
+export default function SignUpForm ({ setUser, handleClick }) {
   const [credentials, setCredentials] = useState({
     username: '',
     email: '',
     password: '',
-    accounts: [],
     confirm: '',
     error: ''
   })
-  useEffect(() => {
-    navigate(link)
-  }, [link])
 
   const handleSubmit = async (event) => {
     event.preventDefault()
