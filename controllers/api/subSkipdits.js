@@ -3,10 +3,18 @@ const SubSkipdit = require('../../models/subSkipdit')
 const dataController = {
     async index (req, res, next) {
         try {
-            const subSkipdits = await SubSkipdit.find({})
+            const subSkipdits = await SubSkipdit.find({}).populate('subPosts subOwner subModerators subMembers')
+            .populate({
+                path: 'subPosts',
+                populate: {
+                    path: 'postOwner',
+                    model: 'User'
+                }
+            })
+            .exec()
             if (!subSkipdits) throw new Error()
-            res.locals.data.subSkipdits = subSkipdits
-            next()
+            res.json(subSkipdits)
+            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
@@ -14,7 +22,7 @@ const dataController = {
     async delete (req, res, next) {
         try {
             await SubSkipdit.findByIdAndDelete(req.body._id)
-            next()
+            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
@@ -23,8 +31,8 @@ const dataController = {
         try {
             const subSkipdit = await SubSkipdit.findByIdAndUpdate(req.body._id, req.body, { new: true })
             if (!subSkipdit) throw new Error()
-            res.locals.data.subSkipdit = subSkipdit
-            next()
+            res.json(subSkipdit)
+            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
@@ -33,18 +41,26 @@ const dataController = {
         try {
             const subSkipdit = await SubSkipdit.create(req.body)
             if (!subSkipdit) throw new Error()
-            res.locals.data.subSkipdit = subSkipdit
-            next()
+            res.json(subSkipdit)
+            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
     },
     async show (req, res, next) {
         try {
-            const subSkipdit = await SubSkipdit.findById(req.body._id)
+            const subSkipdit = await SubSkipdit.findById(req.params.id).populate('subPosts subOwner subModerators subMembers')
+            .populate({
+                path: 'subPosts',
+                populate: {
+                    path: 'postOwner',
+                    model: 'User'
+                }
+            })
+            .exec()
             if (!subSkipdit) throw new Error()
-            res.locals.data.subSkipdit = subSkipdit
-            next()
+            res.json(subSkipdit)
+            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }

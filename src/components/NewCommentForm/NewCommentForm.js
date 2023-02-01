@@ -1,48 +1,49 @@
 import { useState } from "react";
-export default function NewCommentForm (){
-    
-    const [newComment, setNewComment] = useState({
-        body:'',
-        commentOwner:''
-    })
+import { create, update } from '../../utilities/general-service'
 
-    const createComment = async () => {
+export default function NewCommentForm({user, setUpdated, currentPost}) {
+    const [comment, setComment] = useState({
+        commentBody: '',
+        commentOwner: user._id
+    })
+    const [error, setError] = useState('')
+
+    const createComment = async (event) => {
+        event.preventDefault()
         try {
-            const response = await fetch('api/comments', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({...newComment})
-            })
-            const data = await response.json()
-            setNewComment({
-                body: '',
-                commentOwner:''
+            const commentsArr = currentPost.postComments
+            const newComment = await create('comments', comment)
+            commentsArr.push(newComment._id)
+            const postData = {...currentPost, postComments: commentsArr}
+            await update('posts', currentPost._id, postData)
+            setUpdated(Math.random())
+            setError('Comment created!')
+            setComment({
+                commentBody: '',
+                commentOwner: user._id
             })
         } catch (error) {
-            console.error(error)
+            setError('There was an error. Try again.')
         }
     }
 
     const handleChange = (evt) => {
-        setNewComment({...newComment, [evt.target.name]: evt.target.value})
+        setComment({...comment, [evt.target.name]: evt.target.value})
+        setError('')
     }
-    return(
+
+    return (
         <>
-        {
-            user ?(
-                <main>
-                {
-                    <>
-                <h1>Comment as {user._id}</h1>
-                 <input value={newComment.body} onChange={handleChange} name="body" placeholder="What are your thoughts?"></input><br/>
-                 <button onClick={() => createComment() }>Comment</button>
-                 </>   
-                }
-                </main>
-            ):<h1>Login in to Comment</h1>
-        }
+            {user ? 
+                <form onSubmit={createComment}>
+                    <h5>Commenting as {user.username}</h5>
+                    <input value={comment.commentBody} onChange={handleChange} name="commentBody" placeholder="What are your thoughts?"></input><br/>
+                    <input type='submit' value='Comment' />
+                    <br /><p className='error-message'>&nbsp;{error}</p>
+                </form>
+            :
+                <h1>Login in to Comment</h1>
+            }
         </>
     )
 }

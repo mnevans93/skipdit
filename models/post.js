@@ -5,11 +5,11 @@ const postSchema = new Schema({
     postBody: {type: String, required: true},
     postComments: [{
         type: Schema.Types.ObjectId,
-        ref: 'Comments'
+        ref: 'Comment'
     }],
     postOwner: {
         type: Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'User'
     },
     votes: {type: Number}
     },

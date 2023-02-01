@@ -3,10 +3,18 @@ const Post = require('../../models/post')
 const dataController = {
     async index (req, res, next) {
         try {
-            const posts = await Post.find({})
+            const posts = await Post.find({}).populate('postComments postOwner')
+            .populate({
+                path: 'postComments',
+                populate: {
+                    path: 'commentOwner',
+                    model: 'User'
+                }
+            })
+            .exec()
             if (!posts) throw new Error()
-            res.locals.data.posts = posts
-            next()
+            res.json(posts)
+            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
@@ -14,7 +22,7 @@ const dataController = {
     async delete (req, res, next) {
         try {
             await Post.findByIdAndDelete(req.body._id)
-            next()
+            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
@@ -23,8 +31,8 @@ const dataController = {
         try {
             const post = await Post.findByIdAndUpdate(req.body._id, req.body, { new: true })
             if (!post) throw new Error()
-            res.locals.data.post = post
-            next()
+            res.json(post)
+            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
@@ -33,18 +41,26 @@ const dataController = {
         try {
             const post = await Post.create(req.body)
             if (!post) throw new Error()
-            res.locals.data.post = post
-            next()
+            res.json(post)
+            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
     },
     async show (req, res, next) {
         try {
-            const post = await Post.findById(req.body._id)
+            const post = await Post.findById(req.params.id).populate('postComments postOwner')
+            .populate({
+                path: 'postComments',
+                populate: {
+                    path: 'commentOwner',
+                    model: 'User'
+                }
+            })
+            .exec()
             if (!post) throw new Error()
-            res.locals.data.post = post
-            next()
+            res.json(post)
+            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
