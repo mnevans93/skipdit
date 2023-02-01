@@ -37,7 +37,7 @@ export default function SubOverviewPage({user}) {
             <>
                 <h1>{currentSub.subName}</h1> {/* DELETE once SubHeader works properly; this is only for testing */}
                 <SubHeader currentSub={currentSub} />
-                <CreatePostForm currentSub={currentSub} />
+                <CreatePostForm user={user} currentSub={currentSub} setCurrentSub={setCurrentSub} />
                 <div className="SubOverviewPage">
                     {/* <FeedSorter /> */}
                     <PostList currentSub={currentSub} />
