@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { redirect } from 'react-router-dom'
 import { signUp } from '../../utilities/users-service'
 import validInput from '../../utilities/check-input'

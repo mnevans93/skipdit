@@ -14,7 +14,7 @@ export default function SubCard(props) {
                 {/* X (total amount of ONLINE users) / online */}
             </div>
             <div className="CreatePostSubButton">
-                <button>ooh ooh ooh ooh what does this button do</button>
+                <button>Create Post (sub card) </button>
             </div>
         </div>
     )

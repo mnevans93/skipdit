@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './CreatePostForm.scss'
 
-export default function CreatePostForm ({}) {
+export default function CreatePostForm () {
     const [ post , setPost ] = useState({
       title: '',
       body: ''

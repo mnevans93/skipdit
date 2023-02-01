@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { redirect } from 'react-router-dom'
 import * as userService from '../../utilities/users-service'
 import Form from 'react-bootstrap/Form'
