@@ -1,8 +1,8 @@
 const { Schema, model } = require('mongoose')
 
 const postSchema = new Schema({
-    postTitle: {Type: String, required: true},
-    postBody: {Type: String, required: true},
+    postTitle: {type: String, required: true},
+    postBody: {type: String, required: true},
     postComments: [{
         type: Schema.Types.ObjectId,
         ref: 'Comments'
@@ -11,7 +11,7 @@ const postSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Users'
     },
-    votes: {Type: Number}
+    votes: {type: Number}
     },
     {timestamps: true}
 )

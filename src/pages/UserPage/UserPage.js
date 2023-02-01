@@ -1,9 +1,8 @@
 export default function UserPage(props){
-    
     return(
         <>
         {
-            props.users?(
+            props.user ? (
                 <>
                 <div>
                     <h1>{props.user.username}</h1>
@@ -11,7 +10,7 @@ export default function UserPage(props){
                 </div>
                 <ul>
                 {
-                    props.user.subSkipdit
+                    props.user.subSkipdits
                     .map((subSkipdit) =>{
                         return(
                             <li key = {subSkipdit._id}>

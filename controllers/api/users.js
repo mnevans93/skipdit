@@ -15,7 +15,6 @@ const dataController = {
       res.locals.data.token = token
       next()
     } catch (e) {
-      console.log('Account creation error')
       res.status(400).json(e)
     }
   },
@@ -58,9 +57,6 @@ module.exports = {
 }
 
 function createJWT (user) {
-  return jwt.sign(
-    { user },
-    process.env.SECRET,
-    { expiresIn: '24h' }
-  )
+  // accept a user and return a token
+  return jwt.sign({ user }, process.env.SECRET, { expiresIn: '48h', allowInsecureKeySizes: true })
 }

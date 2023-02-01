@@ -1,7 +1,7 @@
 import SignupForm from '../../components/SignupForm/SignupForm'
 
-export default function SignupPage ( props ) {
+export default function SignupPage ( {setUser, navigate, handleClick} ) {
   return (
-    <SignupForm />
+    <SignupForm setUser={setUser} navigate={navigate} handleClick={handleClick} />
   )
 }

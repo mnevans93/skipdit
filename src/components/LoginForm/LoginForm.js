@@ -4,15 +4,13 @@ import * as userService from '../../utilities/users-service'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-export default function LoginForm ({ setUser, link, navigate, handleClick }) {
+export default function LoginForm ({ setUser, handleClick }) {
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
   })
+
   const [error, setError] = useState('')
-  useEffect(() => {
-    navigate(link)
-  }, [link])
 
   const handleChange = (event) => {
     setCredentials({ ...credentials, [event.target.name]: event.target.value })
@@ -48,7 +46,7 @@ export default function LoginForm ({ setUser, link, navigate, handleClick }) {
         <Button variant='primary' type='submit' disabled={disable}>LOG IN</Button>
         <br /><p className='error-message'>&nbsp;{error}</p>
       </Form>
-      <h3>New to BudgIt?</h3>
+      <h3>New to Skipdit?</h3>
       <Button href='/signup' onClick={(e) => handleClick(e, '/signup')}>SIGN UP</Button>
     </>
   )

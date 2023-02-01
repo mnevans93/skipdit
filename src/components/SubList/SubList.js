@@ -5,22 +5,22 @@ export default function SubList ({
     subs,
     link
 }) {
-    return (
-        <ul className={styles.ul}>
-            {
-                subs.length
-                    ? subs.map(sub => (
-                        <SubListItem
-                            key={sub._id}
-                            sub={sub}
-                            link={link}
-                        />
-                    ))
-                    : <>
-                        <h2>Sub Skip'dit yet to be created. Be the first!</h2>
-                    </>
-            }
-        </ul>
+    return ( <></>
+        // <ul className={styles.ul}>
+        //     {
+        //         subs.length
+        //             ? subs.map(sub => (
+        //                 <SubListItem
+        //                     key={sub._id}
+        //                     sub={sub}
+        //                     link={link}
+        //                 />
+        //             ))
+        //             : <>
+        //                 <h2>Sub Skip'dit yet to be created. Be the first!</h2>
+        //             </>
+        //     }
+        // </ul>
     )
 }
 

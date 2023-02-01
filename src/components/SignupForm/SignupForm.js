@@ -5,18 +5,14 @@ import validInput from '../../utilities/check-input'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-export default function SignUpForm ({ setUser, link, navigate, handleClick }) {
+export default function SignUpForm ({ setUser, handleClick }) {
   const [credentials, setCredentials] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
-    accounts: [],
     confirm: '',
     error: ''
   })
-  useEffect(() => {
-    navigate(link)
-  }, [link])
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -45,12 +41,12 @@ export default function SignUpForm ({ setUser, link, navigate, handleClick }) {
 
   return (
     <>
-      <h1>Welcome to BudgIt! Sign up to get started.</h1>
+      <h1>Welcome to Skipdit! Sign up to get started.</h1>
       <br />
       <Form className='text-center' onSubmit={handleSubmit}>
         <Form.Group className='mb-3' controlId='formBasic'>
-          <Form.Label>Name</Form.Label>
-          <Form.Control type='text' name='name' value={credentials.name} onChange={handleChange} placeholder='Enter your name' required />
+          <Form.Label>Username</Form.Label>
+          <Form.Control type='text' name='username' value={credentials.username} onChange={handleChange} placeholder='Enter your username' required />
         </Form.Group>
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Email</Form.Label>
