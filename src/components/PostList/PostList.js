@@ -1,9 +1,12 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import PostListItem from '../PostListItem/PostListItem'
 
 export default function PostList ({currentSub}) {
   const [posts, setPosts] = useState(currentSub.subPosts)
-  console.log(posts)
+  
+  useEffect(() => {
+    setPosts(currentSub.subPosts)
+  }, [currentSub])
   
   return (
     <ul>
