@@ -10,7 +10,7 @@ import CreatePostForm from '../../components/CreatePostForm/CreatePostForm'
 import PostList from '../../components/PostList/PostList'
 import SubCard from '../../components/SubCard/SubCard'
 
-export default function SubOverviewPage({user, handleClick}) {
+export default function SubOverviewPage({user, updated, setUpdated, handleClick}) {
     const [currentSub, setCurrentSub] = useState(null)
     const [error, setError] = useState(null)
     const {subName} = useParams()
@@ -26,7 +26,7 @@ export default function SubOverviewPage({user, handleClick}) {
 
     useEffect(() => {
         getSub()
-    }, [])
+    }, [updated])
     
     return(
         error ? 
@@ -36,7 +36,7 @@ export default function SubOverviewPage({user, handleClick}) {
         : currentSub ?
             <>
                 <SubHeader currentSub={currentSub} />
-                <CreatePostForm user={user} currentSub={currentSub} setCurrentSub={setCurrentSub} />
+                <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} />
                 <div className="SubOverviewPage">
                     {/* <FeedSorter /> */}
                     <PostList currentSub={currentSub} handleClick={handleClick} />

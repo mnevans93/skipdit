@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { show } from '../../utilities/general-service'
 import CommentList from '../../components/CommentList/CommentList'
 
-export default function PostPage({user}) {
+export default function PostPage({user, updated, setUpdated}) {
     const [currentPost, setCurrentPost] = useState(null)
     const [error, setError] = useState(null)
     const {postId} = useParams()
@@ -19,7 +19,7 @@ export default function PostPage({user}) {
 
     useEffect(() => {
         getPost()
-    }, [])
+    }, [updated])
     
     return (
         error ? 
@@ -31,7 +31,7 @@ export default function PostPage({user}) {
                 <p>{currentPost.postOwner.username}</p>
                 <h1>{currentPost.postTitle}</h1>
                 <p>{currentPost.postBody}</p>
-                <CommentList currentPost={currentPost} setCurrentPost={setCurrentPost} user={user} />
+                <CommentList user={user} setUpdated={setUpdated} currentPost={currentPost} setCurrentPost={setCurrentPost} />
             </>
         : 'Loading...'
     )

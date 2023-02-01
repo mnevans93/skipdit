@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { create, update } from '../../utilities/general-service'
 
-export default function NewCommentForm({user, currentPost, setCurrentPost}) {
+export default function NewCommentForm({user, setUpdated, currentPost}) {
     const [comment, setComment] = useState({
         commentBody: '',
         commentOwner: user._id
@@ -16,7 +16,7 @@ export default function NewCommentForm({user, currentPost, setCurrentPost}) {
             commentsArr.push(newComment._id)
             const postData = {...currentPost, postComments: commentsArr}
             const updatedPost = await update('posts', currentPost._id, postData)
-            setCurrentPost(updatedPost)
+            setUpdated(Math.random())
             setError('Comment created!')
             setComment({
                 commentBody: '',

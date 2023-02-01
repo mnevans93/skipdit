@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { create, update } from '../../utilities/general-service'
 import styles from './CreatePostForm.scss'
 
-export default function CreatePostForm ( {user, currentSub, setCurrentSub} ) {
+export default function CreatePostForm ( {user, setUpdated, currentSub} ) {
     const [ post , setPost ] = useState({
       postTitle: '',
       postBody: '',
@@ -24,7 +24,7 @@ export default function CreatePostForm ( {user, currentSub, setCurrentSub} ) {
         subPostsArr.push(newPost._id)
         const subData = {...currentSub, subPosts: subPostsArr}
         const updatedSub = await update('subskipdits', currentSub._id, subData)
-        setCurrentSub(updatedSub)
+        setUpdated(Math.random())
         setError('Post created!')
         setPost({
           postTitle: '',
