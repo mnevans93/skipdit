@@ -39,7 +39,7 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick}
                 <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} />
                 <div className="SubOverviewPage">
                     {/* <FeedSorter /> */}
-                    <PostList currentSub={currentSub} handleClick={handleClick} />
+                    <PostList currentSub={currentSub} setUpdated={setUpdated} handleClick={handleClick} />
                     <SubCard currentSub={currentSub} />
                 </div>
             </>

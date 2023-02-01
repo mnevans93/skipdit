@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { show } from '../../utilities/general-service'
+import VoteContainer from '../../components/VoteContainer/VoteContainer'
 import CommentList from '../../components/CommentList/CommentList'
 
 export default function PostPage({user, updated, setUpdated}) {
@@ -28,6 +29,7 @@ export default function PostPage({user, updated, setUpdated}) {
             </>
         : currentPost ?
             <>
+                <VoteContainer currentPost={currentPost} setCurrentPost={setCurrentPost} setUpdated={setUpdated} />
                 <p>{currentPost.postOwner.username}</p>
                 <h1>{currentPost.postTitle}</h1>
                 <p>{currentPost.postBody}</p>

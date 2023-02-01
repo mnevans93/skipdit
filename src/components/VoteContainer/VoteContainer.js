@@ -1,18 +1,35 @@
-import { useState, useEffect } from 'react'
-import { redirect } from 'react-router-dom'
+import { useState } from 'react'
+import { show, update } from '../../utilities/general-service'
 
-export default function VoteContainer({ props }) {
-    const [voteUp, voteDown] = useState(true);
+export default function VoteContainer({currentPost, setCurrentPost, setUpdated}) {
+  const [error, setError] = useState('')
+
+  const changeVotes = async (event, value) => {
+    event.preventDefault()
+    try {
+      // Need to make sure we are updating the post state in
+      // the database in case our React state isn't up to date
+      const post = await show('posts', currentPost._id)
+      // set the post votes equal to existing votes + or - this vote
+      post.votes += value
+      // use our locally modified post variable to update the post
+      const updatedPost = await update('posts', currentPost._id, {...post})
+      setUpdated(Math.random())
+  } catch (error) {
+      setError('There was an error. Try again.')
+  }
+  }
 
   return (
-    <div className="Vote">
- <form class="voteUp" data-id="{{this._id}}">
-    <button type="submit">Vote Up</button>
-  </form>
-  
-  <form class="voteDown" data-id="{{this._id}}">
-    <button type="submit">Vote Down</button>
-  </form>
+    <div className="voteContainer">
+      <form className="voteUp" onSubmit={e => changeVotes(e, 1)}>
+        <button type="submit">Vote Up</button>
+      </form>
+      <p>{currentPost.votes}</p>
+      <form className="voteDown" onSubmit={e => changeVotes(e, -1)}>
+        <button type="submit">Vote Down</button>
+      </form>
+      <br /><p className='error-message'>&nbsp;{error}</p>
     </div>
-  );
+  )
 }

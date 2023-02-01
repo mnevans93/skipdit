@@ -15,7 +15,7 @@ export default function NewCommentForm({user, setUpdated, currentPost}) {
             const newComment = await create('comments', comment)
             commentsArr.push(newComment._id)
             const postData = {...currentPost, postComments: commentsArr}
-            const updatedPost = await update('posts', currentPost._id, postData)
+            await update('posts', currentPost._id, postData)
             setUpdated(Math.random())
             setError('Comment created!')
             setComment({
@@ -36,9 +36,10 @@ export default function NewCommentForm({user, setUpdated, currentPost}) {
         <>
             {user ? 
                 <form onSubmit={createComment}>
-                    <h5>Comment as {user.username}</h5>
+                    <h5>Commenting as {user.username}</h5>
                     <input value={comment.commentBody} onChange={handleChange} name="commentBody" placeholder="What are your thoughts?"></input><br/>
                     <input type='submit' value='Comment' />
+                    <br /><p className='error-message'>&nbsp;{error}</p>
                 </form>
             :
                 <h1>Login in to Comment</h1>

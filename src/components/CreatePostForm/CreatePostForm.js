@@ -6,7 +6,8 @@ export default function CreatePostForm ( {user, setUpdated, currentSub} ) {
     const [ post , setPost ] = useState({
       postTitle: '',
       postBody: '',
-      postOwner: user._id
+      postOwner: user._id,
+      votes: 0
     })
 
     const [error, setError] = useState('')
