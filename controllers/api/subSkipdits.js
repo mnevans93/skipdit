@@ -3,7 +3,15 @@ const SubSkipdit = require('../../models/subSkipdit')
 const dataController = {
     async index (req, res, next) {
         try {
-            const subSkipdits = await SubSkipdit.find({})
+            const subSkipdits = await SubSkipdit.find({}).populate('subPosts subOwner subModerators subMembers')
+            .populate({
+                path: 'subPosts',
+                populate: {
+                    path: 'postOwner',
+                    model: 'User'
+                }
+            })
+            .exec()
             if (!subSkipdits) throw new Error()
             res.json(subSkipdits)
             // next()
@@ -41,7 +49,15 @@ const dataController = {
     },
     async show (req, res, next) {
         try {
-            const subSkipdit = await SubSkipdit.findById(req.params.id)
+            const subSkipdit = await SubSkipdit.findById(req.params.id).populate('subPosts subOwner subModerators subMembers')
+            .populate({
+                path: 'subPosts',
+                populate: {
+                    path: 'postOwner',
+                    model: 'User'
+                }
+            })
+            .exec()
             if (!subSkipdit) throw new Error()
             res.json(subSkipdit)
             // next()

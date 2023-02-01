@@ -13,6 +13,7 @@ export default function CreatePostForm ( {user, currentSub, setCurrentSub} ) {
 
     const handleChange = (event) => {
       setPost({ ...post, [event.target.name]: event.target.value })
+      setError('')
     } 
 
     const createPost = async (event) => {
@@ -24,7 +25,12 @@ export default function CreatePostForm ( {user, currentSub, setCurrentSub} ) {
         const subData = {...currentSub, subPosts: subPostsArr}
         const updatedSub = await update('subskipdits', currentSub._id, subData)
         setCurrentSub(updatedSub)
-        console.log(updatedSub)
+        setError('Post created!')
+        setPost({
+          postTitle: '',
+          postBody: '',
+          postOwner: user._id
+        })
       } catch (error) {
         setError('There was an error. Try again.')
       }

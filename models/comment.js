@@ -4,12 +4,12 @@ const commentSchema = new Schema({
     commentBody: {type: String, required: true},
     commentOwner: {
         type: Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'User'
     },
     votes: {Type: Number},
     replies: [{
         type: Schema.Types.ObjectId,
-        ref: 'Comments'
+        ref: 'Comment'
     }],
     isReply: {Type: Boolean}
     },

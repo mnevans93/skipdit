@@ -10,7 +10,7 @@ import CreatePostForm from '../../components/CreatePostForm/CreatePostForm'
 import PostList from '../../components/PostList/PostList'
 import SubCard from '../../components/SubCard/SubCard'
 
-export default function SubOverviewPage({user}) {
+export default function SubOverviewPage({user, handleClick}) {
     const [currentSub, setCurrentSub] = useState(null)
     const [error, setError] = useState(null)
     const {subName} = useParams()
@@ -35,12 +35,11 @@ export default function SubOverviewPage({user}) {
             </>
         : currentSub ?
             <>
-                <h1>{currentSub.subName}</h1> {/* DELETE once SubHeader works properly; this is only for testing */}
                 <SubHeader currentSub={currentSub} />
                 <CreatePostForm user={user} currentSub={currentSub} setCurrentSub={setCurrentSub} />
                 <div className="SubOverviewPage">
                     {/* <FeedSorter /> */}
-                    <PostList currentSub={currentSub} />
+                    <PostList currentSub={currentSub} handleClick={handleClick} />
                     <SubCard currentSub={currentSub} />
                 </div>
             </>

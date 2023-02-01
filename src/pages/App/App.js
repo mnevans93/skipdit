@@ -44,8 +44,8 @@ export default function App() {
       <NavBar user={user} setUser={setUser} link={link} setLink={setLink} navigate={navigate} handleClick={handleClick} />
       <Routes>
         <Route path='/s/:subName/:postId' element={<PostPage user={user} posts={posts}/>} />
-        <Route path='/s/:subName' element={<SubOverviewPage user={user} />} />
-        <Route path='/s' element={<ExplorePage link={link} setLink={setLink} />} />
+        <Route path='/s/:subName' element={<SubOverviewPage user={user} handleClick={handleClick} />} />
+        <Route path='/s' element={<ExplorePage link={link} setLink={setLink} handleClick={handleClick} />} />
         <Route path='/*' element={<Navigate to='/s' />} />
         { user ?
           <>

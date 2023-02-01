@@ -13,13 +13,15 @@ export default function CreateCommunityForm ({user}) {
 
     const handleChange = (event) => {
         setCommunity({ ...community, [event.target.name]: event.target.value })
+        setError('')
     } 
 
     const createCommunity = async (event) => {
       event.preventDefault()
       try {
         const newCommunity = await create('subskipdits', community)
-        if (newCommunity) return redirect(`/s/${newCommunity._id}`)
+        // if (newCommunity) return redirect(`/s/${newCommunity._id}`) THIS CODE ISN'T WORKING FOR SOME REASON
+        setError('Community created!')
       } catch (error) {
         setError('There was an error. Try again.')
       }

@@ -3,7 +3,7 @@ const Comment = require('../../models/comment')
 const dataController = {
     async index (req, res, next) {
         try {
-            const comments = await Comment.find({})
+            const comments = await Comment.find({}).populate('commentOwner replies').exec()
             if(!comments) throw new Error()
             res.json(comments)
             // next()
@@ -41,7 +41,7 @@ const dataController = {
     },
     async show (req, res, next) {
         try {
-            const comment = await Comment.findById(req.body._id)
+            const comment = await Comment.findById(req.params.id).populate('commentOwner replies').exec()
             if (!comment) throw new Error()
             res.json(comment)
             // next()

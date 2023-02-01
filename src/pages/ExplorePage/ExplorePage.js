@@ -2,14 +2,9 @@ import { useState, useEffect } from 'react'
 import { index } from '../../utilities/general-service'
 import Button from 'react-bootstrap/Button'
 
-export default function ExplorePage ({setLink}) {
+export default function ExplorePage ({handleClick}) {
     const [subs, setSubs] = useState(null)
     const [error, setError] = useState(null)
-
-    const handleClick = (e, link) => {
-        e.preventDefault()
-        setLink(link)
-    }
 
     useEffect(() => {
         const getSubs = async () => {
@@ -28,7 +23,7 @@ export default function ExplorePage ({setLink}) {
         <>
             <h1>Welcome to Skipdit!</h1>
             <h3>Start browsing communities below!</h3>
-            {subs ? subs : <h5>It's so empty in here... Go create a new community!</h5>}
+            {subs ? subs : 'Loading...'}
         </>
     )
 }

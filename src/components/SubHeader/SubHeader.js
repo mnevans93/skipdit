@@ -1,11 +1,12 @@
 import React from 'react'
 // import './SubHeader.scss'
 
-export default function SubHeader(props) {
+export default function SubHeader({currentSub}) {
   return (
     <div className='SubHeaderContainer'>
-        <h1 className='SubHeaderTitle'>title here</h1>
-        <h4 className='SubHeaderPath'>path here (s/title)</h4>
+        <h1 className='SubHeaderTitle'>Community Title: {currentSub.subName}</h1>
+        <h3>Community Creator: {currentSub.subOwner.username}</h3>
+        <h4 className='SubHeaderPath'>Path: {`/s/${currentSub._id}`}</h4>
         {/* <button /> if joined then display leave else display join */}
     </div>
   )

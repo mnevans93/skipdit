@@ -3,7 +3,15 @@ const Post = require('../../models/post')
 const dataController = {
     async index (req, res, next) {
         try {
-            const posts = await Post.find({})
+            const posts = await Post.find({}).populate('postComments postOwner')
+            .populate({
+                path: 'postComments',
+                populate: {
+                    path: 'commentOwner',
+                    model: 'User'
+                }
+            })
+            .exec()
             if (!posts) throw new Error()
             res.json(posts)
             // next()
@@ -41,7 +49,15 @@ const dataController = {
     },
     async show (req, res, next) {
         try {
-            const post = await Post.findById(req.body._id)
+            const post = await Post.findById(req.params.id).populate('postComments postOwner')
+            .populate({
+                path: 'postComments',
+                populate: {
+                    path: 'commentOwner',
+                    model: 'User'
+                }
+            })
+            .exec()
             if (!post) throw new Error()
             res.json(post)
             // next()

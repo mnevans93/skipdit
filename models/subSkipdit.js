@@ -5,19 +5,19 @@ const subSkipditSchema = new Schema({
     subAbout: {type: String, required: true},
     subPosts: [{
         type: Schema.Types.ObjectId,
-        ref: 'Posts'
+        ref: 'Post'
     }],
     subOwner: {
         type: Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'User'
     },
     subModerators: [{
         type: Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'User'
     }],
     subMembers: [{
         type: Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'User'
     }]
 })
 

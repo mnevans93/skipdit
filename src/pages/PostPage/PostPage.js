@@ -1,28 +1,38 @@
-export default function PostPage(props){
-return(
-    <>
-        {
-            props.posts && props.posts.length ?(
-                <div>
-                {
-                    props.posts
-                    .map((post) => {
-                        return(
-                            <div>
-                                <p>{post.postOwner}</p>
-                                <h1>{post.postTitle}</h1>
-                                <p>{post.postBody}</p>
-                            Form to comment hear
-                            comments here 
-                            turnary on if users post and delete button
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { show } from '../../utilities/general-service'
+import CommentList from '../../components/CommentList/CommentList'
 
-                            </div>
-                        )
-                        })
-                }
-                </div>
-            ):<h1>nothing yet</h1>
+export default function PostPage({user}) {
+    const [currentPost, setCurrentPost] = useState(null)
+    const [error, setError] = useState(null)
+    const {postId} = useParams()
+
+    const getPost = async () => {
+        try {
+            const post = await show('posts', postId)
+            setCurrentPost(post)
+        } catch (e) {
+            setError(e)
         }
-    </>
-)
+    }
+
+    useEffect(() => {
+        getPost()
+    }, [])
+    
+    return (
+        error ? 
+            <>
+                <h1>Oh no! Something went wrong ☹️</h1>
+            </>
+        : currentPost ?
+            <>
+                <p>{currentPost.postOwner.username}</p>
+                <h1>{currentPost.postTitle}</h1>
+                <p>{currentPost.postBody}</p>
+                <CommentList currentPost={currentPost} setCurrentPost={setCurrentPost} user={user} />
+            </>
+        : 'Loading...'
+    )
 }

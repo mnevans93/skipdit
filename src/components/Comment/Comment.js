@@ -1,11 +1,8 @@
-export default function Comment({
-    commentBody,
-    commentOwner
-}){
+export default function Comment({commentBody, commentOwner}) {
     return(
-        <>
-        <p>{commentOwner}</p>
-        <h1>{commentBody}</h1>
-        </>
+        <li>
+            <p>{commentOwner}</p>
+            <h5>{commentBody}</h5>
+        </li>
     )
 }
