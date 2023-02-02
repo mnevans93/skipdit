@@ -1,21 +1,24 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 // import './SubCard.css'
 
-export default function SubCard(props) {
+function SubCard(props) {
     return(
-        <div className='SubCardContainer'>
-            <h4 className="SubCardHeader">{props.title}</h4>
-            <div className='AboutBlurb'>
-                <p className="AboutSub"></p>
+        <Card>
+            <Card.Body className='SubCardContainer'>
+            <Card.Title className="SubCardHeader">Child</Card.Title>
+            <Card.Text className='AboutBlurb'>
                 {/* Created X date */}
-            </div>
-            <div className="MembersContainer">
-                {/* X (total amount of users) / usersNickname */}
-                {/* X (total amount of ONLINE users) / online */}
-            </div>
-            <div className="CreatePostSubButton">
-                <button>Create Post (sub card) </button>
-            </div>
-        </div>
+            </Card.Text>
+            {/* <div className="MembersContainer">
+                {X (total amount of users) / usersNickname}
+                {X (total amount of ONLINE users) / online}
+            </div> */}
+            <Button variant="primary">Create a Post</Button>{' '}
+            </Card.Body>
+        </Card>
     )
 }
+
+export default SubCard

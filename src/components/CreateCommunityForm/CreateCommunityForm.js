@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { redirect } from 'react-router-dom'
 import { create } from '../../utilities/general-service'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 
 export default function CreateCommunityForm ({user}) {
     const [ community , setCommunity ] = useState({
@@ -28,21 +31,30 @@ export default function CreateCommunityForm ({user}) {
     }
  
   return (
-    <>
-      <h2>Create New Community</h2>
+    <Card>
+      <Card.Title>Create a community</Card.Title>
       <div className='container'>
-        <form
+        <Form
           className='form'
           onSubmit={createCommunity}
         >
           <div>
-            <label>Title<input type='text' value={community.subName} name='subName' onChange={handleChange} placeholder='Community Title' /></label>
-            <label>About<input type='text' value={community.subAbout} name='subAbout' onChange={handleChange} placeholder='About this Community' /></label>
+            {/* <label>Title<input type='text' value={community.subName} name='subName' onChange={handleChange} placeholder='Community Title' /></label> */}
+            {/* <label>About<input type='text' value={community.subAbout} name='subAbout' onChange={handleChange} placeholder='About this Community' /></label> */}
+            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" placeholder="Name your community." />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+              <Form.Label>About this Community</Form.Label>
+              <Form.Control as="textarea" rows={3} placeholder="Tell us about your community."/>
+            </Form.Group>
           </div>
-          <input className='button' type='submit' value='Create Community' />
+          {/* <input className='button' type='submit' value='Create Community' /> */}
+          <Button as="input" type="submit" value="Create Community" />{' '}
           <br /><p className='error-message'>&nbsp;{error}</p>
-        </form>
+        </Form>
       </div>
-    </>
+    </Card>
   )
 }

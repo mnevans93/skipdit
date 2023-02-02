@@ -1,5 +1,19 @@
-html, body {
-    background-color: grey;
+$background-color: #c7c7c7;
+$containers-background: #e0e0e0;
+$header-type: #1d1c1c;
+$body-type: #454c50;
+$light-type: #8b9ba6;
+$hover: #868b94;
+$primary: #FFCE54;
+$secondary: #A0D468;
+$upvote: #DA4453;
+$downvote: #967ADC;
+
+html, body, .App {
+    background-color: $background-color;
+    font-family: 'Jost', sans-serif;
+    height: 100%;
+    margin: 0 auto;
 }
 
 .App {
@@ -7,3 +21,15 @@ html, body {
     top: 0;
     padding-top: 62px;
 }
+
+// to be moved around to appropriate parts:
+// .container {
+//     border-radius: 14px;
+//     background: #e0e0e0;
+//     box-shadow:  19px 19px 43px #8d8d8d,
+//                  -19px -19px 43px #ffffff;
+// }
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    }

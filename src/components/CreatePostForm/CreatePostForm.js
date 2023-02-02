@@ -1,6 +1,9 @@
 import { useState } from 'react'
+import { Card } from 'react-bootstrap'
 import { create, update } from '../../utilities/general-service'
 import styles from './CreatePostForm.scss'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
 
 export default function CreatePostForm ( {user, setUpdated, currentSub} ) {
     const [ post , setPost ] = useState({
@@ -38,22 +41,29 @@ export default function CreatePostForm ( {user, setUpdated, currentSub} ) {
     }
  
   return (
-    <>
-      <h2>Create New Post</h2>
+    <Card>
+      <Card.Title>Create a Post</Card.Title>
       <div className={styles.container}>
         <form
           className={styles.form}
           onSubmit={createPost}
         >
-          <div>
+          {/* <div>
             <label>Title<input type='text' value={post.postTitle} name='postTitle' onChange={handleChange} placeholder='Title' /></label>
             <label>Body<input type='text' value={post.postBody} name='postBody' onChange={handleChange} placeholder='Body' /></label>
-          </div>
-          <input className={styles.button} type='submit' value='Create Post' />
+          </div> */}
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+              <Form.Control type="text" placeholder="Title" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+              <Form.Control as="textarea" rows={3} placeholder="Text"/>
+            </Form.Group>
+          {/* <input className={styles.button} type='submit' value='Create Post' /> */}
+          <Button as="input" type="submit" value="Post" />{' '}
           <br /><p className='error-message'>&nbsp;{error}</p>
         </form>
       </div>
 
-    </>
+    </Card>
   )
 }

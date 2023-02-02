@@ -1,12 +1,15 @@
 import VoteContainer from '../VoteContainer/VoteContainer'
+import Card from 'react-bootstrap/Card'
 
-export default function PostListItem ({post, setUpdated, subId, id, title, body, author, handleClick}) {
+function PostListItem ({post, setUpdated, subId, id, title, body, author, handleClick}) {
     return (
-        <li>
+        <Card>
             <VoteContainer currentPost={post} setUpdated={setUpdated} />
-            <h1>Title: <a href={`/s/${subId}/${id}`} onClick={(e) => handleClick(e, `/s/${subId}/${id}`)}>{title}</a></h1>
-            <p>Author: {author}</p>
-            <h4>Body: {body}</h4>
-        </li>
+            <Card.Title>Title: <a href={`/s/${subId}/${id}`} onClick={(e) => handleClick(e, `/s/${subId}/${id}`)}>{title}</a></Card.Title>
+            <Card.Text className='PostCardAuthor'>Author: {author}</Card.Text>
+            <Card.Text className='PostCardBody'>Body: {body}</Card.Text>
+        </Card>
     )
 }
+
+export default PostListItem

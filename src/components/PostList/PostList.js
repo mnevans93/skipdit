@@ -14,7 +14,7 @@ export default function PostList ({currentSub, setUpdated, handleClick}) {
   }, [currentSub])
   
   return (
-    <ul>
+    <ul className='PostList'>
       {
         posts.length ?
           posts.map(post => (
