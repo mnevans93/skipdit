@@ -29,7 +29,7 @@ export default function PostPage({user, updated, setUpdated}) {
             </>
         : currentPost ?
             <>
-                <VoteContainer currentPost={currentPost} setCurrentPost={setCurrentPost} setUpdated={setUpdated} />
+                <VoteContainer user={user} currentPost={currentPost} setCurrentPost={setCurrentPost} setUpdated={setUpdated} />
                 <p>{currentPost.postOwner.username}</p>
                 <h1>{currentPost.postTitle}</h1>
                 <p>{currentPost.postBody}</p>

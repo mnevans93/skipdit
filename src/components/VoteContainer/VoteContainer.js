@@ -1,8 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { show, update } from '../../utilities/general-service'
 
-export default function VoteContainer({currentPost, setCurrentPost, setUpdated}) {
+export default function VoteContainer({user, currentPost, setUpdated}) {
   const [error, setError] = useState('')
+  const [disable, setDisable] = useState(false)
+
+  useEffect(() => {
+    if (!user) setDisable(true)
+  }, [user])
 
   const changeVotes = async (event, value) => {
     event.preventDefault()
@@ -23,11 +28,11 @@ export default function VoteContainer({currentPost, setCurrentPost, setUpdated})
   return (
     <div className="voteContainer">
       <form className="voteUp" onSubmit={e => changeVotes(e, 1)}>
-        <button type="submit">Vote Up</button>
+        <button type="submit" disabled={disable}>&#8593;</button>
       </form>
       <p>{currentPost.votes}</p>
       <form className="voteDown" onSubmit={e => changeVotes(e, -1)}>
-        <button type="submit">Vote Down</button>
+        <button type="submit" disabled={disable}>&#8595;</button>
       </form>
       <br /><p className='error-message'>&nbsp;{error}</p>
     </div>

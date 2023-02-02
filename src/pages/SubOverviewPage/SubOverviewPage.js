@@ -36,10 +36,10 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick}
         : currentSub ?
             <>
                 <SubHeader currentSub={currentSub} />
-                <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} />
+                {user ? <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} /> : ''}
                 <div className="SubOverviewPage">
                     {/* <FeedSorter /> */}
-                    <PostList currentSub={currentSub} setUpdated={setUpdated} handleClick={handleClick} />
+                    <PostList user={user} currentSub={currentSub} setUpdated={setUpdated} handleClick={handleClick} />
                     <SubCard currentSub={currentSub} />
                 </div>
             </>
