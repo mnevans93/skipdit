@@ -6,7 +6,7 @@ import CreateCommunityForm from '../../components/CreateCommunityForm/CreateComm
 // import FeedSorter from '../components/FeedSorter/FeedSorter'
 // import PostList from '../components/PostList/PostList'
 import HomeCard from '../../components/HomeCard/HomeCard'
-import SubList from '../../components/SubList/SubList'
+// import SubList from '../../components/SubList/SubList'
 
 export default function DashboardPage({user}) {
     // variables
@@ -28,7 +28,7 @@ export default function DashboardPage({user}) {
             <CreateCommunityForm user={user} />
             <CreatePostForm user={user} />
             {/* <FeedSorter /> */}
-            <SubList user={user} />
+            {/* <SubList user={user} /> */}
             {/* <PostList /> */}
             <HomeCard user={user} />
         </>

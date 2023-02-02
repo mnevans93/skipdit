@@ -9,17 +9,17 @@ $secondary: #A0D468;
 $upvote: #DA4453;
 $downvote: #967ADC;
 
-html, body, .App {
+#root {
     background-color: $background-color;
     font-family: 'Jost', sans-serif;
+    width: 100%;
     height: 100%;
-    margin: 0 auto;
+    padding-top: 62px;
 }
 
-.App {
+.main-nav {
     position: absolute;
     top: 0;
-    padding-top: 62px;
 }
 
 
@@ -35,7 +35,7 @@ html, body, .App {
     font-family: 'Poppins', sans-serif;
 }
 
-$offcanvas-bg-color: cyan;
+$offcanvas-bg-color: $secondary;
 $offcanvas-color: black;
 
 $theme-colors: (

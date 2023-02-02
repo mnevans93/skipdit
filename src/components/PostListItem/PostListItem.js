@@ -1,7 +1,7 @@
 import VoteContainer from '../VoteContainer/VoteContainer'
 import Card from 'react-bootstrap/Card'
 
-export default PostListItem function PostListItem ({post, setUpdated, subId, id, title, body, author, handleClick}) {
+export default function PostListItem ({post, setUpdated, subId, id, title, body, author, handleClick}) {
     return (
         <Card>
             <VoteContainer currentPost={post} setUpdated={setUpdated} />

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Card } from 'react-bootstrap'
 import { create, update } from '../../utilities/general-service'
-import styles from './CreatePostForm.scss'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 
@@ -40,9 +39,8 @@ export default function CreatePostForm ( {setUpdated, currentSub} ) {
   return (
     <Card>
       <Card.Title>Create a Post</Card.Title>
-      <div className={styles.container}>
+      <div>
         <form
-          className={styles.form}
           onSubmit={createPost}
         >
           {/* <div>
