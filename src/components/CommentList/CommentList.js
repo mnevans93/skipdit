@@ -21,8 +21,11 @@ export default function CommentList({user, setUpdated, currentPost, setCurrentPo
                 {comments ?
                     comments.map(comment => {
                     return(
-                        <Comment key={comment._id} commentOwner={comment.commentOwner.username} commentBody={comment.commentBody} />
+                       
+                        <Comment key={comment._id} commentOwner={comment.commentOwner.username} commentBody={comment.commentBody} user = {user} setUpdated ={setUpdated} id={comment._id}/>
+                        
                     )
+                    
                 })
                 : ''}
             </ul>
