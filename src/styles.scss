@@ -22,6 +22,7 @@ html, body, .App {
     padding-top: 62px;
 }
 
+
 // to be moved around to appropriate parts:
 // .container {
 //     border-radius: 14px;
@@ -32,4 +33,13 @@ html, body, .App {
 
 .logo {
     font-family: 'Poppins', sans-serif;
-    }
+}
+
+$offcanvas-bg-color: cyan;
+$offcanvas-color: black;
+
+$theme-colors: (
+    "primary": cyan
+);
+
+@import "~bootstrap/scss/bootstrap"

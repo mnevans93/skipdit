@@ -51,8 +51,8 @@ export default function NavBar ({ user, setUser, page, link, setLink, navigate, 
             <hr />
             <Offcanvas.Body>
               <Nav className='justify-content-end flex-grow-1 pe-3'>
-                <Nav.Link href='/' onClick={(e) => handleClick(e, '/')}>Browse Communities</Nav.Link>
-                {user ? <Nav.Link href='/dashboard' onClick={(e) => handleClick(e, '/dashboard')}>My Dashboard</Nav.Link> : ''}
+                <Nav.Link href='/' onClick={(e) => handleClick(e, '/')}>Explore Communities</Nav.Link>
+                {/* {user ? <Nav.Link href='/dashboard' onClick={(e) => handleClick(e, '/dashboard')}>My Dashboard</Nav.Link> : ''} COMMENTING THIS OUT FOR NOW */}
                 {user ? <NavDropdown
                   title='My Communities'
                   id='offcanvasNavbarDropdown-expand-expand'

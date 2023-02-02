@@ -9,9 +9,10 @@ const postSchema = new Schema({
     }],
     postOwner: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
-    votes: {type: Number}
+    votes: {type: Number, default: 0}
     },
     {timestamps: true}
 )

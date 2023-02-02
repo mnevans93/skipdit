@@ -4,21 +4,20 @@ import { destroy } from "../../utilities/general-service"
 export default function Comment({commentBody, commentOwner, setUpdated, id, user}) {
     const [match, setMatch] = useState(false)
 
-
     const checkUser = () => {
-        if(commentOwner === user.username){
-            return setMatch(true)
-        }else{
+        if (!user) return null
+        if (commentOwner === user.username) {
+            setMatch(true)
+        } else {
             setMatch(false)
         }
     }
-    const deleteComment = async (event) =>{
+
+    const deleteComment = async (event) => {
         event.preventDefault()
         try {
-           
-            console.log(await destroy('comments', id))
-            setUpdated(Math.random())
-            
+            const deleted = await destroy('comments', id)
+            if (deleted) setUpdated(Math.random())
         } catch (error) {
             console.error(error)
         }
@@ -26,16 +25,13 @@ export default function Comment({commentBody, commentOwner, setUpdated, id, user
 
     useEffect(() =>{
         checkUser()
-    })
+    }, [])
 
     return(
         <li>
             <p>{commentOwner}</p>
             <h5>{commentBody}</h5>
-           {
-                match ? <button onClick={deleteComment}> delete</button>
-                :''
-           }
+            {match ? <button onClick={deleteComment}>DELETE</button> : ''}
         </li>
     )
 }

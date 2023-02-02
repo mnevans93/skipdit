@@ -4,9 +4,10 @@ const commentSchema = new Schema({
     commentBody: {type: String, required: true},
     commentOwner: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
-    votes: {Type: Number},
+    votes: {Type: Number, default: 0},
     replies: [{
         type: Schema.Types.ObjectId,
         ref: 'Comment'

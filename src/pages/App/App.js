@@ -37,7 +37,7 @@ export default function App() {
           <>
             <Route path='/users/:id' element={<UserPage user={user}/>} />
             <Route path='/dashboard' element={<DashboardPage user={user} />} />
-            <Route path='/s/new' element={<CreateCommunityForm user={user} />} />
+            <Route path='/s/new' element={<CreateCommunityForm user={user} setLink={setLink} />} />
           </>
         :
           <>

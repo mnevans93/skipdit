@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { show } from '../../utilities/general-service'
 import PostListItem from '../PostListItem/PostListItem'
 
-export default function PostList ({currentSub, setUpdated, handleClick}) {
+export default function PostList ({user, currentSub, setUpdated, handleClick}) {
   const [posts, setPosts] = useState(currentSub.subPosts)
   
   useEffect(() => {
@@ -20,6 +20,7 @@ export default function PostList ({currentSub, setUpdated, handleClick}) {
           posts.map(post => (
             <div key={post._id}>
               <PostListItem
+                user={user}
                 post={post}
                 subId={currentSub._id}
                 id={post._id}
