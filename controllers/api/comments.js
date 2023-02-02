@@ -13,8 +13,9 @@ const dataController = {
     },
     async delete (req, res, next) {
         try {
-            await Comment.findByIdAndDelete(req.params.id)
-    
+            const comment = await Comment.findByIdAndDelete(req.params.id)
+            if (!comment) throw new Error()
+            res.json(comment)
             // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })

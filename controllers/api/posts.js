@@ -21,7 +21,9 @@ const dataController = {
     },
     async delete (req, res, next) {
         try {
-            await Post.findByIdAndDelete(req.body._id)
+            const post = await Post.findByIdAndDelete(req.params.id)
+            if (!post) throw new Error()
+            res.json(post)
             // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })

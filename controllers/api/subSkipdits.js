@@ -21,7 +21,9 @@ const dataController = {
     },
     async delete (req, res, next) {
         try {
-            await SubSkipdit.findByIdAndDelete(req.body._id)
+            const subSkipdit = await SubSkipdit.findByIdAndDelete(req.params.id)
+            if (!subSkipdit) throw new Error()
+            res.json(subSkipdit)
             // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })

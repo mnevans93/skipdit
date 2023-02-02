@@ -33,7 +33,7 @@ export default function PostPage({user, updated, setUpdated}) {
                 <p>{currentPost.postOwner.username}</p>
                 <h1>{currentPost.postTitle}</h1>
                 <p>{currentPost.postBody}</p>
-                <CommentList user={user} setUpdated={setUpdated} currentPost={currentPost} setCurrentPost={setCurrentPost} />
+                <CommentList user={user} setUpdated={setUpdated} currentPost={currentPost} />
             </>
         : 'Loading...'
     )

@@ -3,7 +3,7 @@ import { show } from '../../utilities/general-service'
 import Comment from "../Comment/Comment"
 import NewCommentForm from "../NewCommentForm/NewCommentForm"
 
-export default function CommentList({user, setUpdated, currentPost, setCurrentPost}){
+export default function CommentList({ user, setUpdated, currentPost }){
     const [comments, setComments] = useState(currentPost.postComments)
 
     useEffect(() => {
@@ -20,13 +20,10 @@ export default function CommentList({user, setUpdated, currentPost, setCurrentPo
             <ul>
                 {comments ?
                     comments.map(comment => {
-                    return(
-                       
-                        <Comment key={comment._id} commentOwner={comment.commentOwner.username} commentBody={comment.commentBody} user = {user} setUpdated ={setUpdated} id={comment._id}/>
-                        
-                    )
-                    
-                })
+                        return (
+                            <Comment key={comment._id} commentOwner={comment.commentOwner.username} commentBody={comment.commentBody} user={user} setUpdated={setUpdated} id={comment._id}/>
+                        )
+                    })
                 : ''}
             </ul>
         </>
