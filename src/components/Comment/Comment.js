@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { destroy } from "../../utilities/general-service"
+
 export default function Comment({commentBody, commentOwner, setUpdated, id, user}) {
     const [match, setMatch] = useState(false)
 
@@ -12,7 +13,7 @@ export default function Comment({commentBody, commentOwner, setUpdated, id, user
         }
     }
 
-    const deleteComment = async (event) =>{
+    const deleteComment = async (event) => {
         event.preventDefault()
         try {
             const deleted = await destroy('comments', id)

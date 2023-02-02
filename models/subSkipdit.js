@@ -9,7 +9,8 @@ const subSkipditSchema = new Schema({
     }],
     subOwner: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     subModerators: [{
         type: Schema.Types.ObjectId,

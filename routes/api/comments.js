@@ -7,9 +7,9 @@ router.get('/:id', dataController.show)
 // Index for comments
 router.get('/', dataController.index)
 // Delete a comment
-router.delete('/:id', checkUserStatus, dataController.delete)
+router.delete('/:id', checkUserStatus, dataController.verifyAgainstDB, dataController.delete)
 // Update a comment
-router.put('/:id', checkUserStatus, dataController.update)
+router.put('/:id', checkUserStatus, dataController.verifyAgainstDB, dataController.update)
 // Create a comment
 router.post('/', checkUserStatus, dataController.create)
 

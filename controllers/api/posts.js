@@ -1,6 +1,14 @@
 const Post = require('../../models/post')
 
 const dataController = {
+    async verifyAgainstDB (req, res, next) {
+        const dbItem = await Post.findById(req.params.id).populate('postOwner')
+        if (req.user.username === dbItem.postOwner.username) {
+            next()
+        } else {
+            res.status(401)
+        }
+    },
     async index (req, res, next) {
         try {
             const posts = await Post.find({}).populate('postComments postOwner')
@@ -14,7 +22,6 @@ const dataController = {
             .exec()
             if (!posts) throw new Error()
             res.json(posts)
-            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
@@ -24,7 +31,6 @@ const dataController = {
             const post = await Post.findByIdAndDelete(req.params.id)
             if (!post) throw new Error()
             res.json(post)
-            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
@@ -34,17 +40,16 @@ const dataController = {
             const post = await Post.findByIdAndUpdate(req.body._id, req.body, { new: true })
             if (!post) throw new Error()
             res.json(post)
-            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
     },
     async create (req, res, next) {
         try {
+            req.body.postOwner = req.user._id
             const post = await Post.create(req.body)
             if (!post) throw new Error()
             res.json(post)
-            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }
@@ -62,7 +67,6 @@ const dataController = {
             .exec()
             if (!post) throw new Error()
             res.json(post)
-            // next()
         } catch (e) {
             res.status(400).json({ msg: e.message })
         }

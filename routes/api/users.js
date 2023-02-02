@@ -6,9 +6,9 @@ const checkUserStatus = require('../../config/checkUserStatus')
 router.post('/', dataController.create, apiController.auth)
 // Login route
 router.post('/login', dataController.login, apiController.auth)
-// Token check route
-router.get('/check-token', checkUserStatus, checkToken)
 // Update info route
 router.put('/:id', dataController.update, apiController.auth)
+// Token check route
+router.get('/check-token', checkUserStatus, checkToken)
 
 module.exports = router

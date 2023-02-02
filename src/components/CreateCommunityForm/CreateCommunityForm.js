@@ -1,12 +1,10 @@
 import { useState } from 'react'
-import { redirect } from 'react-router-dom'
 import { create } from '../../utilities/general-service'
 
-export default function CreateCommunityForm ({user}) {
+export default function CreateCommunityForm ({setLink}) {
     const [ community , setCommunity ] = useState({
       subName: '',
-      subAbout: '',
-      subOwner: user._id
+      subAbout: ''
     })
 
     const [error, setError] = useState('')
@@ -20,7 +18,7 @@ export default function CreateCommunityForm ({user}) {
       event.preventDefault()
       try {
         const newCommunity = await create('subskipdits', community)
-        // if (newCommunity) return redirect(`/s/${newCommunity._id}`) THIS CODE ISN'T WORKING FOR SOME REASON
+        if (newCommunity) setLink(`/s/${newCommunity._id}`)
         setError('Community created!')
       } catch (error) {
         setError('There was an error. Try again.')
