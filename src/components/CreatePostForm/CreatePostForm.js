@@ -2,12 +2,10 @@ import { useState } from 'react'
 import { create, update } from '../../utilities/general-service'
 import styles from './CreatePostForm.scss'
 
-export default function CreatePostForm ( {user, setUpdated, currentSub} ) {
+export default function CreatePostForm ( {setUpdated, currentSub} ) {
     const [ post , setPost ] = useState({
       postTitle: '',
-      postBody: '',
-      postOwner: user._id,
-      votes: 0
+      postBody: ''
     })
 
     const [error, setError] = useState('')
@@ -29,8 +27,7 @@ export default function CreatePostForm ( {user, setUpdated, currentSub} ) {
         setError('Post created!')
         setPost({
           postTitle: '',
-          postBody: '',
-          postOwner: user._id
+          postBody: ''
         })
       } catch (error) {
         setError('There was an error. Try again.')

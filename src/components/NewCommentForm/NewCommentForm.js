@@ -3,8 +3,7 @@ import { create, update } from '../../utilities/general-service'
 
 export default function NewCommentForm({user, setUpdated, currentPost}) {
     const [comment, setComment] = useState({
-        commentBody: '',
-        commentOwner: user._id
+        commentBody: ''
     })
     const [error, setError] = useState('')
 
@@ -19,8 +18,7 @@ export default function NewCommentForm({user, setUpdated, currentPost}) {
             setUpdated(Math.random())
             setError('Comment created!')
             setComment({
-                commentBody: '',
-                commentOwner: user._id
+                commentBody: ''
             })
         } catch (error) {
             setError('There was an error. Try again.')
