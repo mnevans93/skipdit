@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react"
 import { destroy } from "../../utilities/general-service"
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
 
 export default function Comment({commentBody, commentOwner, setUpdated, id, user}) {
     const [match, setMatch] = useState(false)
