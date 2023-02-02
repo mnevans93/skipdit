@@ -16,7 +16,7 @@ export default function CommentList({user, setUpdated, currentPost, setCurrentPo
     
     return(
         <>
-            <NewCommentForm user={user} setUpdated={setUpdated} currentPost={currentPost} />
+            {user ? <NewCommentForm user={user} setUpdated={setUpdated} currentPost={currentPost} /> : ''}
             <ul>
                 {comments ?
                     comments.map(comment => {

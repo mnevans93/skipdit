@@ -7,3 +7,12 @@ html, body {
     top: 0;
     padding-top: 62px;
 }
+
+$offcanvas-bg-color: cyan;
+$offcanvas-color: black;
+
+$theme-colors: (
+    "primary": cyan
+);
+
+@import "~bootstrap/scss/bootstrap"
