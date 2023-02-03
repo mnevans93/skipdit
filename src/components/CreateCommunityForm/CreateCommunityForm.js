@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { create } from '../../utilities/general-service'
+import { update } from '../../utilities/users-service'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import './CreateCommunity.scss'
 
-export default function CreateCommunityForm ({setLink}) {
+export default function CreateCommunityForm ({setLink, user, setUser}) {
     const [ community , setCommunity ] = useState({
       subName: '',
       subAbout: ''
@@ -23,6 +24,8 @@ export default function CreateCommunityForm ({setLink}) {
       try {
         const newCommunity = await create('subskipdits', community)
         if (newCommunity) setLink(`/s/${newCommunity._id}`)
+        user.subSkipdits.push(newCommunity._id)
+        setUser(await update(user))
         setError('Community created!')
       } catch (error) {
         setError('There was an error. Try again.')

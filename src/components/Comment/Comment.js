@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react"
 import { destroy } from "../../utilities/general-service"
 import './Comment.scss'
+import DeleteModal from '../../components/DeleteCommentModal/DeleteCommentModal'
 
 export default function Comment({commentBody, commentOwner, setUpdated, id, user}) {
     const [match, setMatch] = useState(false)
+    const [showModal, setShowModal] = useState(false)
+    const handleClose = () => setShowModal(false)
+    const handleShow = () => setShowModal(true)
 
     const checkUser = () => {
         if (!user) return null
@@ -15,7 +19,6 @@ export default function Comment({commentBody, commentOwner, setUpdated, id, user
     }
 
     const deleteComment = async (event) => {
-        event.preventDefault()
         try {
             const deleted = await destroy('comments', id)
             if (deleted) setUpdated(Math.random())
@@ -32,7 +35,7 @@ export default function Comment({commentBody, commentOwner, setUpdated, id, user
         <li className="CommentContainer">
             <p className="CommentAuthor">{commentOwner}</p>
             <h5>{commentBody}</h5>
-            {match ? <button onClick={deleteComment}>DELETE</button> : ''}
+            {match ? <DeleteModal show={showModal} handleShow={handleShow} handleClose={handleClose} handleDelete={deleteComment} /> : ''}
         </li>
     )
 }

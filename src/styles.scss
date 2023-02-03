@@ -21,12 +21,19 @@ $downvote: #967ADC;
 .main-nav {
     background-color: #f8f9fa;
     position: absolute;
-    display: flex;
-    justify-content: space-around;
     width: 100%;
     top: 0;
     margin-left: 0;
     margin-right: 0;
+}
+
+nav.navbar-expand {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
 }
 
 .ExplorePage {
@@ -51,11 +58,6 @@ $downvote: #967ADC;
 // .NavBarContainer {
 // }
 
-.logo {
-    font-family: 'Poppins', sans-serif;
-    margin-left: 40px;
-}
-
 // BOOTSTRAP TARGETING
 
 $navbar-light-color: $secondary;
@@ -64,7 +66,8 @@ $offcanvas-color: black;
 
 $theme-colors: (
     "primary": $primary,
-    "secondary": $secondary
+    "secondary": $secondary,
+    "warning": $downvote
 );
 
 @import "~bootstrap/scss/bootstrap"
