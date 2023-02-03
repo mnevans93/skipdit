@@ -21,7 +21,6 @@ export default function CreatePostForm ( {setUpdated, currentSub} ) {
       event.preventDefault()
       try {
         const subPostsArr = currentSub.subPosts || []
-        console.log(currentSub.subPosts)
         const newPost = await create('posts', post)
         subPostsArr.push(newPost._id)
         const subData = {...currentSub, subPosts: subPostsArr}

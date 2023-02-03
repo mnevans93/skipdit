@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { show, destroy } from '../../utilities/general-service'
+import { update } from '../../utilities/users-service'
 import SubHeader from '../../components/SubHeader/SubHeader'
 import CreatePostForm from '../../components/CreatePostForm/CreatePostForm'
 import PostList from '../../components/PostList/PostList'
 import SubCard from '../../components/SubCard/SubCard'
-import './SubOverviewPage.scss'
+import DeleteModal from '../../components/DeleteCommunityModal/DeleteCommunityModal'
 
-export default function SubOverviewPage({user, updated, setUpdated, handleClick, setLink}) {
+export default function SubOverviewPage({user, setUser, updated, setUpdated, handleClick, setLink}) {
     const [currentSub, setCurrentSub] = useState(null)
     const [error, setError] = useState(null)
     const [match, setMatch] = useState(false)
     const {subName} = useParams()
+
+    const [showModal, setShowModal] = useState(false)
+    const handleClose = () => setShowModal(false)
+    const handleShow = () => setShowModal(true)
 
     const getSub = async () => {
         try {
@@ -29,12 +34,13 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
         } else {
             setMatch(false)
         }
-        console.log(match)
     }
 
-    const deleteSub = async (event) => {
-        event.preventDefault()
+    const deleteSub = async () => {
         try {
+            const index = user.subSkipdits.findIndex((element) => element._id === currentSub._id)
+            user.subSkipdits.splice(index, 1)
+            setUser(await update(user))
             const deleted = await destroy('subskipdits', currentSub._id)
             if (deleted) setLink('/s')
         } catch (error) {
@@ -44,7 +50,7 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
 
     useEffect(() => {
         getSub()
-    }, [updated])
+    }, [updated, subName])
 
     useEffect(() =>{
         checkUser()
@@ -58,18 +64,18 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
         : currentSub ?
             <div className='SubOverviewPage'>
                 <SubHeader currentSub={currentSub} />
-                {match ? <button onClick={deleteSub}>DELETE COMMUNITY</button> : ''}
+                {match ? <DeleteModal show={showModal} handleShow={handleShow} handleClose={handleClose} handleDelete={deleteSub} /> : ''}
                 <div className='subcontainer'>
-                <div className='subcolleft'>
-                {user ? <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} /> : ''}
-                <div className="SubOverviewItems">
-                    {/* <FeedSorter /> */}
-                    <PostList user={user} currentSub={currentSub} setUpdated={setUpdated} handleClick={handleClick} />
-                </div>
-                </div>
-                <div className='subcolright'>
-                <SubCard currentSub={currentSub} />
-                </div>
+                  <div className='subcolleft'>
+                    {user ? <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} /> : ''}
+                    <div className="SubOverviewItems">
+                        {/* <FeedSorter /> */}
+                        <PostList user={user} currentSub={currentSub} setUpdated={setUpdated} handleClick={handleClick} />
+                    </div>
+                  </div>
+                  <div className='subcolright'>
+                    <SubCard currentSub={currentSub} />
+                  </div>
                 </div>
             </div>
         : 'Loading...' /* displays while the sub info is loading */
