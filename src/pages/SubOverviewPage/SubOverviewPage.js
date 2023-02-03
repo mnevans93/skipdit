@@ -5,6 +5,7 @@ import SubHeader from '../../components/SubHeader/SubHeader'
 import CreatePostForm from '../../components/CreatePostForm/CreatePostForm'
 import PostList from '../../components/PostList/PostList'
 import SubCard from '../../components/SubCard/SubCard'
+import './SubOverviewPage.scss'
 
 export default function SubOverviewPage({user, updated, setUpdated, handleClick, setLink}) {
     const [currentSub, setCurrentSub] = useState(null)
@@ -55,16 +56,22 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
                 <h1>Oh no! Something went wrong ☹️</h1>
             </>
         : currentSub ?
-            <>
+            <div className='SubOverviewPage'>
                 <SubHeader currentSub={currentSub} />
                 {match ? <button onClick={deleteSub}>DELETE COMMUNITY</button> : ''}
+                <div className='subcontainer'>
+                <div className='subcolleft'>
                 {user ? <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} /> : ''}
-                <div className="SubOverviewPage">
+                <div className="SubOverviewItems">
                     {/* <FeedSorter /> */}
                     <PostList user={user} currentSub={currentSub} setUpdated={setUpdated} handleClick={handleClick} />
-                    <SubCard currentSub={currentSub} />
                 </div>
-            </>
+                </div>
+                <div className='subcolright'>
+                <SubCard currentSub={currentSub} />
+                </div>
+                </div>
+            </div>
         : 'Loading...' /* displays while the sub info is loading */
     )
 }

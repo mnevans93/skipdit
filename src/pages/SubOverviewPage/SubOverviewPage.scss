@@ -1,0 +1,49 @@
+.SubOverviewPage { 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.subcontainer {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.subcolleft {
+    width: 165%;
+    margin: 5px;
+}
+
+.subcolright{
+    width: 120%;
+    margin: 5px;
+}
+
+.CreatePostContainer {
+    width: 100%;
+
+    padding: 15px
+}
+
+.SubOverviewItems {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.PostListItem {
+    padding: 15px
+}
+
+.PostList {
+    padding: 0;
+}
+
+// .SubCard {
+//     width: 50%;
+//     margin: 0;
+// }
