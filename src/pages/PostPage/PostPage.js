@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import { show, destroy } from '../../utilities/general-service'
 import VoteContainer from '../../components/VoteContainer/VoteContainer'
 import CommentList from '../../components/CommentList/CommentList'
+import Card from 'react-bootstrap/Card'
+import './PostPage.scss'
 
 export default function PostPage({user, updated, setUpdated, setLink}) {
     const [currentPost, setCurrentPost] = useState(null)
@@ -49,18 +51,26 @@ export default function PostPage({user, updated, setUpdated, setLink}) {
     
     return (
         error ? 
-            <>
-                <h1>Oh no! Something went wrong ☹️</h1>
-            </>
+            <div className='CurrentPostPageError'>
+            <Card className='ErrorCard'>
+                <Card.Title>Oh no! Something went wrong ☹️</Card.Title>
+            </Card>
+            </div>
         : currentPost ?
-            <>
-                <VoteContainer user={user} currentPost={currentPost} setCurrentPost={setCurrentPost} setUpdated={setUpdated} />
-                <p>{currentPost.postOwner.username}</p>
+        <div className='CurrentPostPage'>
+            <Card className='CurrentPost'>
+                <VoteContainer className='VoteContainer' user={user} currentPost={currentPost} setCurrentPost={setCurrentPost} setUpdated={setUpdated} />
+                <div className='CurrentPostBody'>
+                <p className='PostAuthor'>{currentPost.postOwner.username}</p>
+                <Card.Title className='PostTitle'>{currentPost.postTitle}</Card.Title>
                 {match ? <button onClick={deletePost}>DELETE POST</button> : ''}
-                <h1>{currentPost.postTitle}</h1>
-                <p>{currentPost.postBody}</p>
+                <Card.Text className='CardText'>{currentPost.postBody}</Card.Text>
+                <div className='Comments'>
                 <CommentList user={user} setUpdated={setUpdated} currentPost={currentPost} />
-            </>
+                </div>
+                </div>
+            </Card>
+        </div>
         : 'Loading...'
     )
 }

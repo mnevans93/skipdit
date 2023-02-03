@@ -3,6 +3,7 @@ import { create } from '../../utilities/general-service'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
+import './CreateCommunity.scss'
 
 export default function CreateCommunityForm ({setLink}) {
     const [ community , setCommunity ] = useState({
@@ -29,8 +30,9 @@ export default function CreateCommunityForm ({setLink}) {
     }
  
   return (
-    <Card>
-      <Card.Title>Create a community</Card.Title>
+    <div className='CreateCommunityPage'>
+    <Card className='CreateCommunityForm'>
+      <Card.Title className='CreateCommunityTitle'>Create a community</Card.Title>
       <div className='container'>
         <Form
           className='form'
@@ -40,11 +42,9 @@ export default function CreateCommunityForm ({setLink}) {
             {/* <label>Title<input type='text' value={community.subName} name='subName' onChange={handleChange} placeholder='Community Title' /></label> */}
             {/* <label>About<input type='text' value={community.subAbout} name='subAbout' onChange={handleChange} placeholder='About this Community' /></label> */}
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Name</Form.Label>
               <Form.Control type='text' value={community.subName} name='subName' onChange={handleChange} placeholder='Community Title' />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label>About this Community</Form.Label>
               <Form.Control as="textarea" rows={3} value={community.subAbout} name='subAbout' onChange={handleChange} placeholder="Tell us about your community."/>
             </Form.Group>
           </div>
@@ -54,5 +54,6 @@ export default function CreateCommunityForm ({setLink}) {
         </Form>
       </div>
     </Card>
+    </div>
   )
 }

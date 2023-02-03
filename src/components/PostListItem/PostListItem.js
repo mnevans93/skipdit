@@ -7,9 +7,9 @@ export default function PostListItem ({post, setUpdated, subId, id, title, body,
         <Card className='PostListItem'>
             <VoteContainer currentPost={post} setUpdated={setUpdated} />
             <div className='PostBody'>
-            <Card.Title>Title: <a href={`/s/${subId}/${id}`} onClick={(e) => handleClick(e, `/s/${subId}/${id}`)}>{title}</a></Card.Title>
-            <Card.Text className='PostCardAuthor'>Author: {author}</Card.Text>
-            <Card.Text className='PostCardBody'>Body: {body}</Card.Text>
+            <Card.Title><a href={`/s/${subId}/${id}`} onClick={(e) => handleClick(e, `/s/${subId}/${id}`)}>{title}</a></Card.Title>
+            <Card.Text className='PostCardAuthor'>{author}</Card.Text>
+            <Card.Text className='PostCardBody'>{body}</Card.Text>
             </div>
         </Card>
     )

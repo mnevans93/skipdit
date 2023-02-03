@@ -3,6 +3,8 @@ import { redirect } from 'react-router-dom'
 import * as userService from '../../utilities/users-service'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { Card } from 'react-bootstrap'
+import './LoginForm.scss'
 
 export default function LoginForm ({ setUser, handleClick }) {
   const [credentials, setCredentials] = useState({
@@ -31,23 +33,22 @@ export default function LoginForm ({ setUser, handleClick }) {
   const disable = !credentials.password
 
   return (
-    <>
-      <h1>Welcome back! Sign in below to pick up where you left off.</h1>
+    <Card className='LoginForm'>
+      <h1 className='logo'>Welcome back!</h1> 
+      <h1 className='logo'>Sign in below to pick up where you left off.</h1>
       <br />
       <Form className='text-center' onSubmit={handleSubmit}>
         <Form.Group className='mb-3' controlId='formBasicEmail'>
-          <Form.Label>Email</Form.Label>
           <Form.Control type='email' name='email' value={credentials.email} onChange={handleChange} placeholder='Enter your email' required />
         </Form.Group>
         <Form.Group className='mb-3' controlId='formBasicPassword'>
-          <Form.Label>Password</Form.Label>
           <Form.Control type='password' name='password' value={credentials.password} onChange={handleChange} placeholder='Password' required />
         </Form.Group>
         <Button variant='primary' type='submit' disabled={disable}>LOG IN</Button>
         <br /><p className='error-message'>&nbsp;{error}</p>
-      </Form>
-      <h3>New to Skipdit?</h3>
+        <h3 className='SignUpHeader logo'>New to Skipdit?</h3>
       <Button href='/signup' onClick={(e) => handleClick(e, '/signup')}>SIGN UP</Button>
-    </>
+      </Form>
+    </Card>
   )
 }
