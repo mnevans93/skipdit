@@ -1,0 +1,53 @@
+// @import url('../../styles.scss');
+
+.CurrentPostPageError {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    background-color: #dae0e6;
+}
+
+.ErrorCard {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    height: 45%;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+.CurrentPostPage {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    background-color: #dae0e6;
+}
+
+.CurrentPost {
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+}
+
+.CurrentPostBody {
+    margin-left: 15px;
+    padding-left: 5px;
+    padding-right: 10px;
+    width: 100%;
+}
+
+.CardText {
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.PostAuthor {
+    color: #8b9ba6;
+    margin-bottom: 4px;
+}
+
+.PostTitle {
+    font-size: xx-large;
+    margin-bottom: 10px;
+}

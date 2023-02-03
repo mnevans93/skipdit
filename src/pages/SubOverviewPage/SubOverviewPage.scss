@@ -1,0 +1,45 @@
+.SubOverviewPage { 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.subcontainer {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.subcolleft {
+    width: 190%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.subcolright{
+    width: 120%;
+    margin-left: 5px;
+}
+
+.CreatePostContainer {
+    width: 100%;
+    padding: 15px;
+}
+
+.SubOverviewItems {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.PostListItem {
+    padding: 15px;
+}
+
+.PostList {
+    padding: 0;
+}

@@ -1,0 +1,41 @@
+.Banner {
+    background-color: #A0D468;
+    width: 100%;
+    height: 50px;
+}
+
+.SubHeaderContainer {
+    width: 100%;
+    padding: 25px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+}
+
+.SubHeaderContainer > .btn {
+    min-width: 175px;
+    max-height: 40px;
+}
+
+.SubHeaderTitle {
+    margin: 0;
+    font-size: xx-large;
+    text-align: left;
+    top: 15%;
+}
+
+.SubHeaderUsername {
+    font-size: smaller;
+    top: 15%;
+    left: 10%;
+    padding-left: 10px;
+}
+
+.SubHeaderSizer {
+    width: 80%;
+    height: fit-content;
+}
+
+

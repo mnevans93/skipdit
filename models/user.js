@@ -19,15 +19,15 @@ const userSchema = new Schema({
   },
   subSkipdits: [{
     type: Schema.Types.ObjectId,
-    ref: 'SubSkipdits'
+    ref: 'SubSkipdit'
   }],
   posts: [{
     type: Schema.Types.ObjectId,
-    ref: 'Posts'
+    ref: 'Post'
   }],
   comments: [{
     type: Schema.Types.ObjectId,
-    ref: 'Comments'
+    ref: 'Comment'
   }]
 }, {
   toJSON: {

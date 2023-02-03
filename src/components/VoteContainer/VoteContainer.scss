@@ -1,0 +1,33 @@
+$upvote: #DA4453;
+$downvote: #967ADC;
+
+.voteContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+button.voteUp, button.voteDown {
+    border: none;
+    background-color: white;
+    font-size: x-large;
+}
+
+button.voteUp:hover {
+    color: $upvote;
+}
+
+button.voteDown:hover {
+    color: $downvote;
+}
+
+button.voteUp:active, button.voteDown:active {
+    color: black;
+}
+
+p {
+    margin: 0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}

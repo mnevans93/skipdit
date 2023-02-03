@@ -1,17 +1,20 @@
 const { Schema, model } = require('mongoose')
 
 const postSchema = new Schema({
-    postTitle: {Type: String, required: true},
-    postBody: {Type: String, required: true},
+    postTitle: {type: String, required: true},
+    postBody: {type: String, required: true},
     postComments: [{
         type: Schema.Types.ObjectId,
-        ref: 'Comments'
+        ref: 'Comment'
     }],
     postOwner: {
         type: Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'User',
+        required: true
     },
-    votes: {Type: Number}
-})
+    votes: {type: Number, default: 0}
+    },
+    {timestamps: true}
+)
 
 module.exports = model('Post', postSchema)

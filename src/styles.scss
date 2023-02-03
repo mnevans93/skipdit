@@ -1,0 +1,33 @@
+$background-color: #dae0e6;
+$containers-background: #f0f0f0;
+$header-type: #1d1c1c;
+$body-type: #454c50;
+$light-type: #8b9ba6;
+$hover: #868b94;
+$primary: #FFCE54;
+$secondary: #A0D468;
+$upvote: #DA4453;
+$downvote: #967ADC;
+
+#root {
+    background-color: $background-color;
+    font-family: 'Jost', sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    padding-top: 62px;
+}
+
+// BOOTSTRAP TARGETING
+
+$navbar-light-color: $secondary;
+$offcanvas-bg-color: $secondary;
+$offcanvas-color: black;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "warning": $downvote
+);
+
+@import "~bootstrap/scss/bootstrap"

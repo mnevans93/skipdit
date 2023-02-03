@@ -1,0 +1,49 @@
+.ExplorePage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ExploreContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Expcolleft {
+    width: 190%;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.Expcolright{
+    width: 120%;
+    margin: 5px;
+}
+
+.ExploreCard {
+    width: 100%;
+    margin: 5px;
+    padding: 15px;
+}
+
+.ExplorePageTitle {
+    width: 100%;
+    margin: 5px;
+    padding: 15px;
+}
+
+.ExploreCard > div > a {
+    color: #FFCE54;
+    text-decoration: none;
+    font-size: xx-large;
+}
+
+.ExploreCard > div > a:hover {
+    color: #A0D468;
+    transition-duration: 500ms;
+}

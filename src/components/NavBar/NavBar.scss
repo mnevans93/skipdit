@@ -1,0 +1,25 @@
+.main-nav {
+    background-color: #f8f9fa;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+nav.navbar-expand {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+}
+
+a.nav-link, a.nav-link.active {
+    color: black;
+}
+
+a.nav-link:hover, a.nav-link.active:hover {
+    color: #A0D468;
+}

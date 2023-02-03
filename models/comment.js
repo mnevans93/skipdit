@@ -1,17 +1,20 @@
 const { Schema, model } = require('mongoose')
 
 const commentSchema = new Schema({
-    commentBody: {Type: String, required: true},
+    commentBody: {type: String, required: true},
     commentOwner: {
         type: Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'User',
+        required: true
     },
-    votes: {Type: Number},
+    votes: {Type: Number, default: 0},
     replies: [{
         type: Schema.Types.ObjectId,
-        ref: 'Comments'
+        ref: 'Comment'
     }],
     isReply: {Type: Boolean}
-})
+    },
+    {timestamps: true}
+)
 
 module.exports = model('Comment', commentSchema)
