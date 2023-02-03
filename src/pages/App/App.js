@@ -40,18 +40,18 @@ export default function App() {
   }
 
   const generateButton = (subId, subOwner) => { //subId is sub _id string, subOwner is user object of owner
-    if (!user.subSkipdits.length) return <Button variant="secondary" onClick={(e) => community(e, subId, true)} >JOIN COMMUNITY</Button>
+    if (!user.subSkipdits.length) return <Button variant="secondary" onClick={(e) => community(e, subId, true)} >Join Community</Button>
     const subs = user.subSkipdits
     for (const i in subs) {
         if (subs[i]._id === subId) {
             if (user._id === subOwner._id) {
-                return <Button variant="outline-warning" disabled >YOUR COMMUNITY</Button>
+                return <Button variant="outline-warning" disabled >Your Community</Button>
             } else {
-                return <Button variant="outline-warning" onClick={(e) => community(e, subId, false)} >LEAVE COMMUNITY</Button>
+                return <Button variant="outline-warning" onClick={(e) => community(e, subId, false)} >Leave Community</Button>
             }
         }
     }
-    return <Button variant="secondary" onClick={(e) => community(e, subId, true)} >JOIN COMMUNITY</Button>
+    return <Button variant="secondary" onClick={(e) => community(e, subId, true)} >Join Community</Button>
   }
 
   return(

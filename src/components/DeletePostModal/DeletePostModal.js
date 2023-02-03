@@ -9,8 +9,8 @@ export default function DeletePostModal ({ show, handleShow, handleClose, handle
 
   return (
     <>
-      <Button variant="warning" onClick={handleShow}>
-        DELETE POST
+      <Button variant="outline-warning" onClick={handleShow}>
+        Delete Post
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -20,10 +20,10 @@ export default function DeletePostModal ({ show, handleShow, handleClose, handle
         <Modal.Body>Are you sure you want to delete this post? This cannot be undone.</Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>
-            CANCEL
+            Cancel
           </Button>
-          <Button variant="warning" onClick={handleClick}>
-            DELETE POST
+          <Button variant="outline-warning" onClick={handleClick}>
+            Delete Post
           </Button>
         </Modal.Footer>
       </Modal>

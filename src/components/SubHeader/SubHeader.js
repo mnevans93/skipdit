@@ -37,14 +37,17 @@ export default function SubHeader({user, setUser, currentSub, setLink, community
   }
 
   return (
-    <div className='SubHeaderContainer'>
-      <div className='SubHeaderSizer'>
-        <h1 className='SubHeaderTitle'> {currentSub.subName}</h1>
-        <h3 className='SubHeaderUsername'> s/{currentSub._id}</h3>
-        {/* <h4 className='SubHeaderPath'>Path: {`/s/${currentSub._id}`}</h4> */}
-        {/* <button /> if joined then display leave else display join */}
+    <>
+      <div className='Banner'></div>
+      <div className='SubHeaderContainer'>
+        <div className='SubHeaderSizer'>
+          <h1 className='SubHeaderTitle'> {currentSub.subName}</h1>
+          <h3 className='SubHeaderUsername'> s/{currentSub._id}</h3>
+          {/* <h4 className='SubHeaderPath'>Path: {`/s/${currentSub._id}`}</h4> */}
+          {/* <button /> if joined then display leave else display join */}
+        </div>
+        {!user? <Button disabled>SIGN UP TO JOIN!</Button> : match ? <DeleteModal show={showModal} handleShow={handleShow} handleClose={handleClose} handleDelete={deleteSub} /> : generateButton(currentSub._id, currentSub.subOwner)}
       </div>
-      {!user? <Button disabled>SIGN UP TO JOIN!</Button> : match ? <DeleteModal show={showModal} handleShow={handleShow} handleClose={handleClose} handleDelete={deleteSub} /> : generateButton(currentSub._id, currentSub.subOwner)}
-    </div>
+    </>
   )
 }

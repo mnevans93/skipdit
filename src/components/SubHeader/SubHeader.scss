@@ -1,13 +1,22 @@
+.Banner {
+    background-color: #A0D468;
+    width: 100%;
+    height: 50px;
+}
+
 .SubHeaderContainer {
     width: 100%;
     padding: 25px;
-    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 10px;
     display: flex;
+    background-color: white;
     justify-content: center;
 }
 
 .SubHeaderContainer > .btn {
     min-width: 175px;
+    max-height: 40px;
 }
 
 .SubHeaderTitle {

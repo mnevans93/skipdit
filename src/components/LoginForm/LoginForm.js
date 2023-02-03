@@ -44,10 +44,10 @@ export default function LoginForm ({ setUser, handleClick }) {
         <Form.Group className='mb-3' controlId='formBasicPassword'>
           <Form.Control type='password' name='password' value={credentials.password} onChange={handleChange} placeholder='Password' required />
         </Form.Group>
-        <Button variant='primary' type='submit' disabled={disable}>LOG IN</Button>
+        <Button variant='primary' type='submit' disabled={disable}>Log In</Button>
         <br /><p className='error-message'>&nbsp;{error}</p>
         <h3 className='SignUpHeader logo'>New to Skipdit?</h3>
-      <Button href='/signup' onClick={(e) => handleClick(e, '/signup')}>SIGN UP</Button>
+      <Button href='/signup' onClick={(e) => handleClick(e, '/signup')}>Sign Up</Button>
       </Form>
     </Card>
   )

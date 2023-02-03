@@ -11,7 +11,9 @@ export default function SubCard({ currentSub }) {
                 </Card.Text>
                 <br />
                 <Card.Text className='SubCardDate'>
-                    {`Created: ${currentSub.createdAt.substring(0, 10)} ${currentSub.createdAt.substring(11, 19)} GMT`}
+                    {`Created By: ${currentSub.subOwner.username}`}
+                    <br />
+                    {`Date Created: ${currentSub.createdAt.substring(0, 10)} ${currentSub.createdAt.substring(11, 19)} GMT`}
                 </Card.Text>
             </Card.Body>
         </Card>

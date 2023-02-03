@@ -58,10 +58,10 @@ export default function SignUpForm ({ setUser, handleClick }) {
         <Form.Group className='mb-3' controlId='formBasicConfirm'>
           <Form.Control type='password' name='confirm' value={credentials.confirm} onChange={handleChange} placeholder='Confirm password' required />
         </Form.Group>
-        <Button variant='primary' type='submit' disabled={disable}>SIGN UP</Button>
+        <Button variant='primary' type='submit' disabled={disable}>Sign Up</Button>
         <br /><p className='error-message'>&nbsp;{credentials.error}</p>
         <h3 className='logo'>Already have an Account?</h3>
-        <Button className='LoginButton' href='/login' onClick={(e) => handleClick(e, '/login')}>LOGIN</Button>
+        <Button className='LoginButton' href='/login' onClick={(e) => handleClick(e, '/login')}>Login</Button>
       </Form>
      </Card>
   )

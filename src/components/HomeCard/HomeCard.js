@@ -3,14 +3,14 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import './HomeCard.scss'
 
-function HomeCard({handleClick}) {
+function HomeCard({user, handleClick}) {
     return(
         <Card className='HomeCardContainer'>
             <Card.Body className='HomeCard'>
                 <Card.Title className="HomeTitle">Home</Card.Title>
                 <Card.Text className="HomeBlurb">Your personal Skipdit frontpage. Come here to check in with your favorite communities.</Card.Text>
                 <div className='HomeCardButtons'>
-                <Button variant="outline-primary" onClick={(e) => handleClick(e, '/s/new')}>Create a Community</Button>{' '}
+                {user ? <Button variant="outline-primary" onClick={(e) => handleClick(e, '/s/new')}>Create a Community</Button> : <Button disabled variant="outline-primary">Sign In To Create A Community</Button>}
                 </div>
             </Card.Body>
             <Card.Body className='PolicyCard'>

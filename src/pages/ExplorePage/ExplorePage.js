@@ -38,7 +38,7 @@ export default function ExplorePage ({user, handleClick, generateButton}) {
             {subs ? subs : 'Loading...'}
             </div>
             <div className='Expcolright'>
-                <HomeCard handleClick={handleClick}/>
+                <HomeCard user={user} handleClick={handleClick}/>
             </div>
             </div>
             </div>

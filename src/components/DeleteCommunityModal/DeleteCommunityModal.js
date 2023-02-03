@@ -10,7 +10,7 @@ export default function DeleteCommunityModal ({ show, handleShow, handleClose, h
   return (
     <>
       <Button variant="outline-warning" onClick={handleShow}>
-        DELETE COMMUNITY
+        Delete Community
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -20,10 +20,10 @@ export default function DeleteCommunityModal ({ show, handleShow, handleClose, h
         <Modal.Body>Are you sure you want to delete this community? This cannot be undone.</Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>
-            CANCEL
+            Cancel
           </Button>
           <Button variant="outline-warning" onClick={handleClick}>
-            DELETE COMMUNITY
+            Delete Community
           </Button>
         </Modal.Footer>
       </Modal>
