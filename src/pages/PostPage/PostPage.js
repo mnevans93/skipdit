@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { show } from '../../utilities/general-service'
+import { show, destroy } from '../../utilities/general-service'
 import VoteContainer from '../../components/VoteContainer/VoteContainer'
 import CommentList from '../../components/CommentList/CommentList'
 
-export default function PostPage({user, updated, setUpdated}) {
+export default function PostPage({user, updated, setUpdated, setLink}) {
     const [currentPost, setCurrentPost] = useState(null)
     const [error, setError] = useState(null)
-    const {postId} = useParams()
+    const [match, setMatch] = useState(false)
+    const {subName, postId} = useParams()
 
     const getPost = async () => {
         try {
@@ -18,9 +19,33 @@ export default function PostPage({user, updated, setUpdated}) {
         }
     }
 
+    const checkUser = () => {
+        if (!user || !currentPost) return null
+        if (currentPost.postOwner.username === user.username) {
+            setMatch(true)
+        } else {
+            setMatch(false)
+        }
+        console.log(match)
+    }
+
+    const deletePost = async (event) => {
+        event.preventDefault()
+        try {
+            const deleted = await destroy('posts', currentPost._id)
+            if (deleted) setLink(`/s/${subName}`)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     useEffect(() => {
         getPost()
     }, [updated])
+
+    useEffect(() =>{
+        checkUser()
+    }, [currentPost])
     
     return (
         error ? 
@@ -31,6 +56,7 @@ export default function PostPage({user, updated, setUpdated}) {
             <>
                 <VoteContainer user={user} currentPost={currentPost} setCurrentPost={setCurrentPost} setUpdated={setUpdated} />
                 <p>{currentPost.postOwner.username}</p>
+                {match ? <button onClick={deletePost}>DELETE POST</button> : ''}
                 <h1>{currentPost.postTitle}</h1>
                 <p>{currentPost.postBody}</p>
                 <CommentList user={user} setUpdated={setUpdated} currentPost={currentPost} />

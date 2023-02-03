@@ -9,7 +9,7 @@ router.get('/', dataController.index)
 // Delete a post. We need to verify the user attempting to delete a post is the sub owner
 router.delete('/:id', checkUserStatus, dataController.verifyAgainstDB, dataController.delete)
 // Update a post. We need to verify the user attempting to update a post is the sub owner
-router.put('/:id', checkUserStatus, dataController.verifyAgainstDB, dataController.update)
+router.put('/:id', checkUserStatus, dataController.update)
 // Create a post. We need to verify the user is logged in when attempting to create a new post
 router.post('/', checkUserStatus, dataController.create)
 

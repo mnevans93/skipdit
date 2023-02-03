@@ -32,13 +32,13 @@ export default function NavBar ({ user, setUser, page, link, setLink, navigate, 
 
   return (
     <div className='main-nav'>
-<Navbar bg="light" variant="light">
+      <Navbar bg="light" variant="light">
         <Container className='NavBarContainer'>
           <Navbar.Brand className='logo' href="/">skipdit</Navbar.Brand>
           <Nav className="me-auto">
           <Nav.Link href='/' onClick={(e) => handleClick(e, '/')}>Explore Communities</Nav.Link>
           <Nav.Link href='/s/new' onClick={(e) => handleClick(e, '/s/new')}>Create Community</Nav.Link>
-          {user ? 
+          {user ?
                   <>
                     <Nav.Link href={`/users/${user._id}`} onClick={(e) => handleClick(e, `/users/${user._id}`)}>User Options</Nav.Link>
                     <Nav.Link href='/' onClick={(e) => handleLogout(e)}>Logout</Nav.Link>

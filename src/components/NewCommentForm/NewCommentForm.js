@@ -39,14 +39,11 @@ export default function NewCommentForm({user, setUpdated, currentPost}) {
                 <Card>
                 <Form onSubmit={createComment}>
                     <Card.Title>Commenting as {user.username}</Card.Title>
-                    {/* <input value={comment.commentBody} onChange={handleChange} name="commentBody" placeholder="What are your thoughts?"></input><br/>
-                    <input type='submit' value='Comment' /> */}
-
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Control as="textarea" rows={3} placeholder="What are your thoughts?"/>
+                        <Form.Control as="textarea" rows={3} value={comment.commentBody} onChange={handleChange} name="commentBody" placeholder="What are your thoughts?"/>
                     </Form.Group>
                     <Button as="input" type="submit" value="Comment" />{' '}
-                    {/* <br /><p className='error-message'>&nbsp;{error}</p> */}
+                    <br /><p className='error-message'>&nbsp;{error}</p>
                 </Form>
                 </Card>
             :

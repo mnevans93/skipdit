@@ -1,18 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { show } from '../../utilities/general-service'
-
-// import styles from './SubOverviewPage.module.scss'
-// import { Link, useNavigate } from 'react-router-dom'
+import { show, destroy } from '../../utilities/general-service'
 import SubHeader from '../../components/SubHeader/SubHeader'
 import CreatePostForm from '../../components/CreatePostForm/CreatePostForm'
-// import FeedSorter from '../components/FeedSorter/FeedSorter'
 import PostList from '../../components/PostList/PostList'
 import SubCard from '../../components/SubCard/SubCard'
 
-export default function SubOverviewPage({user, updated, setUpdated, handleClick}) {
+export default function SubOverviewPage({user, updated, setUpdated, handleClick, setLink}) {
     const [currentSub, setCurrentSub] = useState(null)
     const [error, setError] = useState(null)
+    const [match, setMatch] = useState(false)
     const {subName} = useParams()
 
     const getSub = async () => {
@@ -24,9 +21,33 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick}
         }
     }
 
+    const checkUser = () => {
+        if (!user || !currentSub) return null
+        if (currentSub.subOwner.username === user.username) {
+            setMatch(true)
+        } else {
+            setMatch(false)
+        }
+        console.log(match)
+    }
+
+    const deleteSub = async (event) => {
+        event.preventDefault()
+        try {
+            const deleted = await destroy('subskipdits', currentSub._id)
+            if (deleted) setLink('/s')
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     useEffect(() => {
         getSub()
     }, [updated])
+
+    useEffect(() =>{
+        checkUser()
+    }, [currentSub])
     
     return(
         error ? 
@@ -36,6 +57,7 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick}
         : currentSub ?
             <>
                 <SubHeader currentSub={currentSub} />
+                {match ? <button onClick={deleteSub}>DELETE COMMUNITY</button> : ''}
                 {user ? <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} /> : ''}
                 <div className="SubOverviewPage">
                     {/* <FeedSorter /> */}
