@@ -51,6 +51,7 @@ const dataController = {
             if (!subSkipdit) throw new Error()
             res.json(subSkipdit)
         } catch (e) {
+            console.log(e)
             res.status(400).json({ msg: e.message })
         }
     },

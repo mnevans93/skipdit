@@ -9,7 +9,7 @@ export default function DeleteCommunityModal ({ show, handleShow, handleClose, h
 
   return (
     <>
-      <Button variant="warning" onClick={handleShow}>
+      <Button variant="outline-warning" onClick={handleShow}>
         DELETE COMMUNITY
       </Button>
 
@@ -22,7 +22,7 @@ export default function DeleteCommunityModal ({ show, handleShow, handleClose, h
           <Button variant="primary" onClick={handleClose}>
             CANCEL
           </Button>
-          <Button variant="warning" onClick={handleClick}>
+          <Button variant="outline-warning" onClick={handleClick}>
             DELETE COMMUNITY
           </Button>
         </Modal.Footer>
