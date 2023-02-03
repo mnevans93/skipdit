@@ -41,11 +41,11 @@ export default function CreateCommunityForm ({setLink}) {
             {/* <label>About<input type='text' value={community.subAbout} name='subAbout' onChange={handleChange} placeholder='About this Community' /></label> */}
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Name your community." />
+              <Form.Control type='text' value={community.subName} name='subName' onChange={handleChange} placeholder='Community Title' />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label>About this Community</Form.Label>
-              <Form.Control as="textarea" rows={3} placeholder="Tell us about your community."/>
+              <Form.Control as="textarea" rows={3} value={community.subAbout} name='subAbout' onChange={handleChange} placeholder="Tell us about your community."/>
             </Form.Group>
           </div>
           {/* <input className='button' type='submit' value='Create Community' /> */}

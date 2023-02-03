@@ -20,7 +20,8 @@ export default function CreatePostForm ( {setUpdated, currentSub} ) {
     const createPost = async (event) => {
       event.preventDefault()
       try {
-        const subPostsArr = currentSub.subPosts
+        const subPostsArr = currentSub.subPosts || []
+        console.log(currentSub.subPosts)
         const newPost = await create('posts', post)
         subPostsArr.push(newPost._id)
         const subData = {...currentSub, subPosts: subPostsArr}
@@ -40,20 +41,13 @@ export default function CreatePostForm ( {setUpdated, currentSub} ) {
     <Card>
       <Card.Title>Create a Post</Card.Title>
       <div>
-        <form
-          onSubmit={createPost}
-        >
-          {/* <div>
-            <label>Title<input type='text' value={post.postTitle} name='postTitle' onChange={handleChange} placeholder='Title' /></label>
-            <label>Body<input type='text' value={post.postBody} name='postBody' onChange={handleChange} placeholder='Body' /></label>
-          </div> */}
+        <form onSubmit={createPost}>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Control type="text" placeholder="Title" />
+              <Form.Control type='text' value={post.postTitle} name='postTitle' onChange={handleChange} placeholder='Title' />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Control as="textarea" rows={3} placeholder="Text"/>
+              <Form.Control as="textarea" rows={3} type='text' value={post.postBody} name='postBody' onChange={handleChange} placeholder='Body'/>
             </Form.Group>
-          {/* <input className={styles.button} type='submit' value='Create Post' /> */}
           <Button as="input" type="submit" value="Post" />{' '}
           <br /><p className='error-message'>&nbsp;{error}</p>
         </form>

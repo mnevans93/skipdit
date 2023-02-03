@@ -35,11 +35,15 @@ $downvote: #967ADC;
     font-family: 'Poppins', sans-serif;
 }
 
+// BOOTSTRAP TARGETING
+
+$navbar-light-color: $secondary;
 $offcanvas-bg-color: $secondary;
 $offcanvas-color: black;
 
 $theme-colors: (
-    "primary": cyan
+    "primary": $primary,
+    "secondary": $secondary
 );
 
 @import "~bootstrap/scss/bootstrap"

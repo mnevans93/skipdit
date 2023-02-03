@@ -33,7 +33,7 @@ export default function NavBar ({ user, setUser, page, link, setLink, navigate, 
 
   return (
     <div className='main-nav'>
-      <Navbar fixed="top" bg='primary' expand='false' className='mb-3' collapseOnSelect='true'>
+      <Navbar fixed="top" bg='secondary' expand='false' className='mb-3' collapseOnSelect='true'>
         <Container fluid>
           <Navbar.Brand><Nav.Link href='/' onClick={(e) => handleClick(e, '/')}>skipdit</Nav.Link></Navbar.Brand>
           <Navbar.Toggle aria-controls='offcanvasNavbar-expand-expand' />
@@ -41,7 +41,7 @@ export default function NavBar ({ user, setUser, page, link, setLink, navigate, 
             id='offcanvasNavbar-expand-expand'
             aria-labelledby='offcanvasNavbarLabel-expand-expand'
             placement='end'
-            bg='primary'
+            bg='secondary'
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id='offcanvasNavbarLabel-expand-expand'>
