@@ -62,16 +62,22 @@ export default function SubOverviewPage({user, setUser, updated, setUpdated, han
                 <h1>Oh no! Something went wrong ☹️</h1>
             </>
         : currentSub ?
-            <>
+            <div className='SubOverviewPage'>
                 <SubHeader currentSub={currentSub} />
                 {match ? <DeleteModal show={showModal} handleShow={handleShow} handleClose={handleClose} handleDelete={deleteSub} /> : ''}
-                {user ? <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} /> : ''}
-                <div className="SubOverviewPage">
-                    {/* <FeedSorter /> */}
-                    <PostList user={user} currentSub={currentSub} setUpdated={setUpdated} handleClick={handleClick} />
+                <div className='subcontainer'>
+                  <div className='subcolleft'>
+                    {user ? <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} /> : ''}
+                    <div className="SubOverviewItems">
+                        {/* <FeedSorter /> */}
+                        <PostList user={user} currentSub={currentSub} setUpdated={setUpdated} handleClick={handleClick} />
+                    </div>
+                  </div>
+                  <div className='subcolright'>
                     <SubCard currentSub={currentSub} />
+                  </div>
                 </div>
-            </>
+            </div>
         : 'Loading...' /* displays while the sub info is loading */
     )
 }
