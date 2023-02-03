@@ -3,6 +3,7 @@ import { index } from '../../utilities/general-service'
 import './ExplorePage.scss'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
+import HomeCard from '../../components/HomeCard/HomeCard'
 
 export default function ExplorePage ({user, handleClick, generateButton}) {
     const [subs, setSubs] = useState(null)
@@ -28,11 +29,18 @@ export default function ExplorePage ({user, handleClick, generateButton}) {
     return (
         <>
             <div className='ExplorePage'>
+            <div className='ExploreContainer'>
+            <div className='Expcolleft'>
             <Card className='ExplorePageTitle'>
                 <Card.Title>{!user ? 'Welcome to Skipdit!' : `Hi again, ${user.username} !`}</Card.Title>
                 <Card.Title>{!user ? 'Start browsing communities below!' : 'Start browsing communities below, or make your own!'}</Card.Title>
             </Card>
             {subs ? subs : 'Loading...'}
+            </div>
+            <div className='Expcolright'>
+                <HomeCard handleClick={handleClick}/>
+            </div>
+            </div>
             </div>
         </>
     )
