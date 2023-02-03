@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { index } from '../../utilities/general-service'
 import { update } from '../../utilities/users-service'
+import './ExplorePage.scss'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 

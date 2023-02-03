@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { show, destroy } from '../../utilities/general-service'
 import { update } from '../../utilities/users-service'
+import './SubOverviewPage.scss'
 import SubHeader from '../../components/SubHeader/SubHeader'
 import CreatePostForm from '../../components/CreatePostForm/CreatePostForm'
 import PostList from '../../components/PostList/PostList'
@@ -66,16 +67,16 @@ export default function SubOverviewPage({user, setUser, updated, setUpdated, han
                 <SubHeader currentSub={currentSub} />
                 {match ? <DeleteModal show={showModal} handleShow={handleShow} handleClose={handleClose} handleDelete={deleteSub} /> : ''}
                 <div className='subcontainer'>
-                  <div className='subcolleft'>
-                    {user ? <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} /> : ''}
-                    <div className="SubOverviewItems">
-                        {/* <FeedSorter /> */}
-                        <PostList user={user} currentSub={currentSub} setUpdated={setUpdated} handleClick={handleClick} />
+                    <div className='subcolleft'>
+                        {user ? <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} /> : ''}
+                        <div className="SubOverviewItems">
+                            {/* <FeedSorter /> */}
+                            <PostList user={user} currentSub={currentSub} setUpdated={setUpdated} handleClick={handleClick} />
+                        </div>
                     </div>
-                  </div>
-                  <div className='subcolright'>
-                    <SubCard currentSub={currentSub} />
-                  </div>
+                    <div className='subcolright'>
+                        <SubCard currentSub={currentSub} />
+                    </div>
                 </div>
             </div>
         : 'Loading...' /* displays while the sub info is loading */
