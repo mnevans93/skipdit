@@ -22,7 +22,7 @@ export default function CommentList({ user, setUpdated, currentPost }){
                 {comments ?
                     comments.map(comment => {
                         return (
-                            <Comment key={comment._id} commentOwner={comment.commentOwner.username} commentBody={comment.commentBody} user={user} setUpdated={setUpdated} id={comment._id}/>
+                            <Comment key={comment._id} commentOwner={comment.commentOwner.username} commentTime={`${comment.createdAt.substring(0, 10)} ${comment.createdAt.substring(11, 19)}  GMT`} commentBody={comment.commentBody} user={user} setUpdated={setUpdated} id={comment._id}/>
                         )
                     })
                 : ''}

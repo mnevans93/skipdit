@@ -3,7 +3,7 @@ import { destroy } from "../../utilities/general-service"
 import './Comment.scss'
 import DeleteModal from '../../components/DeleteCommentModal/DeleteCommentModal'
 
-export default function Comment({commentBody, commentOwner, setUpdated, id, user}) {
+export default function Comment({commentBody, commentOwner, commentTime, setUpdated, id, user}) {
     const [match, setMatch] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const handleClose = () => setShowModal(false)
@@ -18,7 +18,7 @@ export default function Comment({commentBody, commentOwner, setUpdated, id, user
         }
     }
 
-    const deleteComment = async (event) => {
+    const deleteComment = async () => {
         try {
             const deleted = await destroy('comments', id)
             if (deleted) setUpdated(Math.random())
@@ -33,7 +33,7 @@ export default function Comment({commentBody, commentOwner, setUpdated, id, user
 
     return(
         <li className="CommentContainer">
-            <p className="CommentAuthor">{commentOwner}</p>
+            <p className="CommentAuthor">{commentOwner} - {commentTime}</p>
             <h5>{commentBody}</h5>
             {match ? <DeleteModal show={showModal} handleShow={handleShow} handleClose={handleClose} handleDelete={deleteComment} /> : ''}
         </li>
