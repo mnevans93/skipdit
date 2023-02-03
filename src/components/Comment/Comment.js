@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { destroy } from "../../utilities/general-service"
+import Button from 'react-bootstrap/Button'
 
 export default function Comment({commentBody, commentOwner, setUpdated, id, user}) {
     const [match, setMatch] = useState(false)
@@ -31,7 +32,7 @@ export default function Comment({commentBody, commentOwner, setUpdated, id, user
         <li>
             <p>{commentOwner}</p>
             <h5>{commentBody}</h5>
-            {match ? <button onClick={deleteComment}>DELETE</button> : ''}
+            {match ? <Button onClick={deleteComment}>DELETE</Button> : ''}
         </li>
     )
 }

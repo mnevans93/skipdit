@@ -5,6 +5,7 @@ import SubHeader from '../../components/SubHeader/SubHeader'
 import CreatePostForm from '../../components/CreatePostForm/CreatePostForm'
 import PostList from '../../components/PostList/PostList'
 import SubCard from '../../components/SubCard/SubCard'
+import Button from 'react-bootstrap/Button'
 
 export default function SubOverviewPage({user, updated, setUpdated, handleClick, setLink}) {
     const [currentSub, setCurrentSub] = useState(null)
@@ -16,6 +17,7 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
         try {
             const sub = await show('subskipdits', subName)
             setCurrentSub(sub)
+            console.log(currentSub)
         } catch (e) {
             setError(e)
         }
@@ -28,7 +30,6 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
         } else {
             setMatch(false)
         }
-        console.log(match)
     }
 
     const deleteSub = async (event) => {
@@ -43,7 +44,7 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
 
     useEffect(() => {
         getSub()
-    }, [updated])
+    }, [updated, subName])
 
     useEffect(() =>{
         checkUser()
@@ -57,7 +58,7 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
         : currentSub ?
             <>
                 <SubHeader currentSub={currentSub} />
-                {match ? <button onClick={deleteSub}>DELETE COMMUNITY</button> : ''}
+                {match ? <Button onClick={deleteSub}>DELETE COMMUNITY</Button> : ''}
                 {user ? <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} /> : ''}
                 <div className="SubOverviewPage">
                     {/* <FeedSorter /> */}

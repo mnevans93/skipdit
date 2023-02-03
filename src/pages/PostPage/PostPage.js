@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom'
 import { show, destroy } from '../../utilities/general-service'
 import VoteContainer from '../../components/VoteContainer/VoteContainer'
 import CommentList from '../../components/CommentList/CommentList'
+import Button from 'react-bootstrap/Button'
 
-export default function PostPage({user, updated, setUpdated, setLink}) {
+export default function PostPage({user, updated, setUpdated, link, setLink}) {
     const [currentPost, setCurrentPost] = useState(null)
     const [error, setError] = useState(null)
     const [match, setMatch] = useState(false)
@@ -41,7 +42,7 @@ export default function PostPage({user, updated, setUpdated, setLink}) {
 
     useEffect(() => {
         getPost()
-    }, [updated])
+    }, [updated, link])
 
     useEffect(() =>{
         checkUser()
@@ -56,7 +57,7 @@ export default function PostPage({user, updated, setUpdated, setLink}) {
             <>
                 <VoteContainer user={user} currentPost={currentPost} setCurrentPost={setCurrentPost} setUpdated={setUpdated} />
                 <p>{currentPost.postOwner.username}</p>
-                {match ? <button onClick={deletePost}>DELETE POST</button> : ''}
+                {match ? <Button onClick={deletePost}>DELETE POST</Button> : ''}
                 <h1>{currentPost.postTitle}</h1>
                 <p>{currentPost.postBody}</p>
                 <CommentList user={user} setUpdated={setUpdated} currentPost={currentPost} />
