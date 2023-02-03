@@ -9,7 +9,7 @@ router.get('/', dataController.index)
 // Delete a sub. We need to verify the user attempting to delete a sub is the sub owner
 router.delete('/:id', checkUserStatus, dataController.verifyAgainstDB, dataController.delete)
 // Update a sub. We need to verify the user attempting to update a sub is the sub owner
-router.put('/:id', checkUserStatus, dataController.verifyAgainstDB, dataController.update)
+router.put('/:id', checkUserStatus, dataController.update)
 // Create a sub. We need to verify the user is logged in when attempting to create a new sub
 router.post('/', checkUserStatus, dataController.create)
 
