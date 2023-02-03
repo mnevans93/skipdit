@@ -9,8 +9,7 @@ import './CreateCommunity.scss'
 export default function CreateCommunityForm ({setLink, user, setUser}) {
     const [ community , setCommunity ] = useState({
       subName: '',
-      subAbout: '',
-      subImg: ''
+      subAbout: ''
     })
 
     const [error, setError] = useState('')
@@ -50,9 +49,6 @@ export default function CreateCommunityForm ({setLink, user, setUser}) {
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Control as="textarea" rows={3} value={community.subAbout} name='subAbout' onChange={handleChange} placeholder="Tell us about your community."/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Control type='text' value={community.subImg} name='subImg' onChange={handleChange} placeholder='Banner Image Link (Optional)' />
             </Form.Group>
           </div>
           {/* <input className='button' type='submit' value='Create Community' /> */}

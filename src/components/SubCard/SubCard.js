@@ -1,24 +1,19 @@
-import React from 'react'
-import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
-// import './SubCard.css'
+import './SubCard.scss'
 
-function SubCard(props) {
+export default function SubCard({ currentSub }) {
     return(
         <Card className='SubCard'>
+            <Card.Header className="SubCardHeader">About Community</Card.Header>
             <Card.Body className='SubCardContainer'>
-            <Card.Title className="SubCardHeader">Child</Card.Title>
-            <Card.Text className='AboutBlurb'>
-                {/* Created X date */}
-            </Card.Text>
-            {/* <div className="MembersContainer">
-                {X (total amount of users) / usersNickname}
-                {X (total amount of ONLINE users) / online}
-            </div> */}
-            <Button variant="primary">Create a Post</Button>{' '}
+                <Card.Text className='AboutBlurb'>
+                    {currentSub.subAbout}
+                </Card.Text>
+                <br />
+                <Card.Text className='SubCardDate'>
+                    {`Created: ${currentSub.createdAt.substring(0, 10)} ${currentSub.createdAt.substring(11, 19)} GMT`}
+                </Card.Text>
             </Card.Body>
         </Card>
     )
 }
-
-export default SubCard

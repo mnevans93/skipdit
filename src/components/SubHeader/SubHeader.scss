@@ -6,6 +6,10 @@
     justify-content: center;
 }
 
+.SubHeaderContainer > .btn {
+    min-width: 175px;
+}
+
 .SubHeaderTitle {
     margin: 0;
     font-size: xx-large;
@@ -22,4 +26,7 @@
 
 .SubHeaderSizer {
     width: 80%;
+    height: fit-content;
 }
+
+
