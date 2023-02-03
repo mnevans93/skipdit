@@ -17,11 +17,7 @@ export default function NavBar ({ user, setUser, link, setLink, navigate, handle
     const items = user.subSkipdits.map((el) => 
       <NavDropdown.Item key={el._id} href={`/s/${el._id}`} onClick={(e) => handleClick(e, `/s/${el._id}`)}>{el.subName}</NavDropdown.Item>
     )
-    if (items.length) {
-      setDropdownSubs(items)
-    } else {
-      setDropdownSubs(null)
-    }
+    items.length ? setDropdownSubs(items) : setDropdownSubs(null)
   }, [user])
 
   const handleLogout = (e) => {

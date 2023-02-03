@@ -7,15 +7,19 @@ import Card from 'react-bootstrap/Card'
 export default function ExplorePage ({user, setUser, handleClick}) {
     const [subs, setSubs] = useState(null)
 
-    const checkForSub = (subId) => {
-        let match = false
-        if (!user.subSkipdits.length) return false
-        user.subSkipdits.forEach(userSub => {
-            if (userSub._id === subId) {
-                match = true
+    const generateButton = (subId, subOwner) => { //subId is sub _id string, subOwner is user object of owner
+        if (!user.subSkipdits.length) return <Button onClick={(e) => community(e, subId, true)} >JOIN COMMUNITY</Button>
+        const subs = user.subSkipdits
+        for (const i in subs) {
+            if (subs[i]._id === subId) {
+                if (user._id === subOwner._id) {
+                    return <Button variant="warning" disabled >YOUR COMMUNITY</Button>
+                } else {
+                    return <Button variant="warning" onClick={(e) => community(e, subId, false)} >LEAVE COMMUNITY</Button>
+                }
             }
-        })
-        return match
+        }
+        return <Button onClick={(e) => community(e, subId, true)} >JOIN COMMUNITY</Button>
     }
 
     const community = async (event, subId, joining) => {
@@ -43,10 +47,8 @@ export default function ExplorePage ({user, setUser, handleClick}) {
                     <Card.Subtitle className="mb-2 text-muted">{sub.subAbout}</Card.Subtitle>
                     {!user ? 
                         <Button disabled>SIGN UP TO JOIN!</Button>
-                    : !checkForSub(sub._id) ?
-                        <Button onClick={(e) => community(e, sub._id, true)} >JOIN COMMUNITY</Button>
                     :
-                        <Button variant="warning" onClick={(e) => community(e, sub._id, false)} >LEAVE COMMUNITY</Button>
+                        generateButton(sub._id, sub.subOwner)
                     }
                 </Card>
             ))

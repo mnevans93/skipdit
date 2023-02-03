@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { getUser } from '../../utilities/users-service'
 import UserPage from "../UserPage/UserPage";
@@ -17,9 +17,6 @@ export default function App() {
   const [link, setLink] = useState('')
   const [updated, setUpdated] = useState(0)
 
-  // use this on sub pages that require id's or slugs
-  // const {subName, postId} = useParams()
-
   const handleClick = (e, link) => {
     e.preventDefault()
     setLink(link)
@@ -37,7 +34,7 @@ export default function App() {
           <>
             <Route path='/users/:id' element={<UserPage user={user}/>} />
             <Route path='/dashboard' element={<DashboardPage user={user} />} />
-            <Route path='/s/new' element={<CreateCommunityForm user={user} setLink={setLink} />} />
+            <Route path='/s/new' element={<CreateCommunityForm user={user} setUser={setUser} setLink={setLink} />} />
           </>
         :
           <>

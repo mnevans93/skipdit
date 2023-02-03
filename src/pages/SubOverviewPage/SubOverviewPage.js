@@ -5,13 +5,17 @@ import SubHeader from '../../components/SubHeader/SubHeader'
 import CreatePostForm from '../../components/CreatePostForm/CreatePostForm'
 import PostList from '../../components/PostList/PostList'
 import SubCard from '../../components/SubCard/SubCard'
-import Button from 'react-bootstrap/Button'
+import DeleteModal from '../../components/DeleteCommunityModal/DeleteCommunityModal'
 
 export default function SubOverviewPage({user, updated, setUpdated, handleClick, setLink}) {
     const [currentSub, setCurrentSub] = useState(null)
     const [error, setError] = useState(null)
     const [match, setMatch] = useState(false)
     const {subName} = useParams()
+
+    const [showModal, setShowModal] = useState(false)
+    const handleClose = () => setShowModal(false)
+    const handleShow = () => setShowModal(true)
 
     const getSub = async () => {
         try {
@@ -32,8 +36,7 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
         }
     }
 
-    const deleteSub = async (event) => {
-        event.preventDefault()
+    const deleteSub = async () => {
         try {
             const deleted = await destroy('subskipdits', currentSub._id)
             if (deleted) setLink('/s')
@@ -58,7 +61,7 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
         : currentSub ?
             <>
                 <SubHeader currentSub={currentSub} />
-                {match ? <Button onClick={deleteSub}>DELETE COMMUNITY</Button> : ''}
+                {match ? <DeleteModal show={showModal} handleShow={handleShow} handleClose={handleClose} handleDelete={deleteSub} /> : ''}
                 {user ? <CreatePostForm user={user} setUpdated={setUpdated} currentSub={currentSub} /> : ''}
                 <div className="SubOverviewPage">
                     {/* <FeedSorter /> */}
