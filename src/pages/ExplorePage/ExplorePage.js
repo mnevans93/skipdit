@@ -4,6 +4,7 @@ import { update } from '../../utilities/users-service'
 import './ExplorePage.scss'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
+import HomeCard from '../../components/HomeCard/HomeCard'
 
 export default function ExplorePage ({user, setUser, handleClick}) {
     const [subs, setSubs] = useState(null)
@@ -60,11 +61,18 @@ export default function ExplorePage ({user, setUser, handleClick}) {
     return (
         <>
             <div className='ExplorePage'>
+            <div className='ExploreContainer'>
+            <div className='Expcolleft'>
             <Card className='ExplorePageTitle'>
                 <Card.Title>Welcome to Skipdit!</Card.Title>
                 <Card.Title>Start browsing communities below!</Card.Title>
             </Card>
             {subs ? subs : 'Loading...'}
+            </div>
+            <div className='Expcolright'>
+                <HomeCard handleClick={handleClick}/>
+            </div>
+            </div>
             </div>
         </>
     )
