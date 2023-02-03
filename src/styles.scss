@@ -1,4 +1,4 @@
-$background-color: #c7c7c7;
+$background-color: #dae0e6;
 $containers-background: #e0e0e0;
 $header-type: #1d1c1c;
 $body-type: #454c50;
@@ -18,11 +18,38 @@ $downvote: #967ADC;
 }
 
 .main-nav {
+    background-color: #f8f9fa;
     position: absolute;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
     top: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
+.ExplorePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
+.ExploreCard {
+    width: 45%;
+    margin: 5px;
+    padding: 15px;
+}
+
+.ExplorePageTitle {
+    width: 45%;
+    margin: 15px;
+    padding: 15px;
+}
+
+// .NavBarContainer {
+    
+// }
 // to be moved around to appropriate parts:
 // .container {
 //     border-radius: 14px;
@@ -33,6 +60,7 @@ $downvote: #967ADC;
 
 .logo {
     font-family: 'Poppins', sans-serif;
+    margin-left: 40px;
 }
 
 // BOOTSTRAP TARGETING

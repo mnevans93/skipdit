@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { index } from '../../utilities/general-service'
 import Button from 'react-bootstrap/Button'
+import { Card } from 'react-bootstrap'
 
 export default function ExplorePage ({handleClick}) {
     const [subs, setSubs] = useState(null)
@@ -10,10 +11,10 @@ export default function ExplorePage ({handleClick}) {
         const getSubs = async () => {
             const foundSubs = await index('subskipdits')
             setSubs(foundSubs.map(sub => 
-                <div key={sub._id}>
-                    <h1><a href={`/s/${sub._id}`} onClick={(e) => handleClick(e, `/s/${sub._id}`)}>{sub.subName}</a></h1>
-                    <h3>{sub.subAbout}</h3>
-                </div>
+                <Card key={sub._id} className='ExploreCard'>
+                    <Card.Title><a href={`/s/${sub._id}`} onClick={(e) => handleClick(e, `/s/${sub._id}`)}>{sub.subName}</a></Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">{sub.subAbout}</Card.Subtitle>
+                </Card>
             ))
         }
         getSubs().catch(console.error)
@@ -21,9 +22,13 @@ export default function ExplorePage ({handleClick}) {
     
     return (
         <>
-            <h1>Welcome to Skipdit!</h1>
-            <h3>Start browsing communities below!</h3>
+        <div className='ExplorePage'>
+        <Card className='ExplorePageTitle'>
+            <Card.Title>Welcome to Skipdit!</Card.Title>
+            <Card.Title>Start browsing communities below!</Card.Title>
+        </Card>
             {subs ? subs : 'Loading...'}
+            </div>
         </>
     )
 }
