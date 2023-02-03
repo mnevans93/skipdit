@@ -1,7 +1,5 @@
-
-
 .PostListItem {
-    padding: 0 20px 0 40px;
+    padding: 5 20px 0 40px;
     display: flex;
     flex-direction: row;
     // justify-content: center;
@@ -11,6 +9,7 @@
 .PostBody {
     margin-left: 5px;
     padding-left: 5px;
+    padding-top: 5px;
 }
 
 .PostCardBody {

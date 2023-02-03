@@ -15,3 +15,11 @@ nav.navbar-expand {
 .logo {
     font-family: 'Poppins', sans-serif;
 }
+
+a.nav-link, a.nav-link.active {
+    color: black;
+}
+
+a.nav-link:hover, a.nav-link.active:hover {
+    color: #A0D468;
+}

@@ -28,12 +28,12 @@ export default function VoteContainer({user, currentPost, setUpdated}) {
 
   return (
     <div className="voteContainer">
-      <form className="voteUp" onSubmit={e => changeVotes(e, 1)}>
-        <button type="submit" disabled={disable}>&#8593;</button>
+      <form onSubmit={e => changeVotes(e, 1)}>
+        <button className="voteUp" type="submit" disabled={disable}>&#8679;</button>
       </form>
       <p>{currentPost.votes}</p>
-      <form className="voteDown" onSubmit={e => changeVotes(e, -1)}>
-        <button type="submit" disabled={disable}>&#8595;</button>
+      <form onSubmit={e => changeVotes(e, -1)}>
+        <button className="voteDown" type="submit" disabled={disable}>&#8681;</button>
       </form>
       <br /><p className='error-message'>&nbsp;{error}</p>
     </div>

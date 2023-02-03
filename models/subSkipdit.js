@@ -3,6 +3,7 @@ const { Schema, model } = require('mongoose')
 const subSkipditSchema = new Schema({
     subName: {type: String, required: true, unique: true},
     subAbout: {type: String, required: true},
+    subImg: {type: String},
     subPosts: [{
         type: Schema.Types.ObjectId,
         ref: 'Post'
