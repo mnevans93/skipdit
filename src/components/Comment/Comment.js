@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { destroy } from "../../utilities/general-service"
+import './Comment.scss'
 import DeleteModal from '../../components/DeleteCommentModal/DeleteCommentModal'
 
 export default function Comment({commentBody, commentOwner, setUpdated, id, user}) {
@@ -31,8 +32,8 @@ export default function Comment({commentBody, commentOwner, setUpdated, id, user
     }, [])
 
     return(
-        <li>
-            <p>{commentOwner}</p>
+        <li className="CommentContainer">
+            <p className="CommentAuthor">{commentOwner}</p>
             <h5>{commentBody}</h5>
             {match ? <DeleteModal show={showModal} handleShow={handleShow} handleClose={handleClose} handleDelete={deleteComment} /> : ''}
         </li>

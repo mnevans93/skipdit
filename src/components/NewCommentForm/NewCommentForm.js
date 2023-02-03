@@ -3,6 +3,7 @@ import { create, update } from '../../utilities/general-service'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
+import './NewCommentForm.scss'
 
 export default function NewCommentForm({user, setUpdated, currentPost}) {
     const [comment, setComment] = useState({
@@ -36,7 +37,7 @@ export default function NewCommentForm({user, setUpdated, currentPost}) {
     return (
         <>
             {user ? 
-                <Card>
+                <Card className="CommentCard">
                 <Form onSubmit={createComment}>
                     <Card.Title>Commenting as {user.username}</Card.Title>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

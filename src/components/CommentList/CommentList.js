@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { show } from '../../utilities/general-service'
 import Comment from "../Comment/Comment"
 import NewCommentForm from "../NewCommentForm/NewCommentForm"
+import './CommentList.scss'
 
 export default function CommentList({ user, setUpdated, currentPost }){
     const [comments, setComments] = useState(currentPost.postComments)
