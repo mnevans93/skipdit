@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card'
 
 function SubCard(props) {
     return(
-        <Card>
+        <Card className='SubCard'>
             <Card.Body className='SubCardContainer'>
             <Card.Title className="SubCardHeader">Child</Card.Title>
             <Card.Text className='AboutBlurb'>

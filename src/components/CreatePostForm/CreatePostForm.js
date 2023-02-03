@@ -38,7 +38,7 @@ export default function CreatePostForm ( {setUpdated, currentSub} ) {
     }
  
   return (
-    <Card>
+    <Card className='CreatePostContainer'>
       <Card.Title>Create a Post</Card.Title>
       <div>
         <form onSubmit={createPost}>
