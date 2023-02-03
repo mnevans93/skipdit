@@ -1,0 +1,25 @@
+.SubHeaderContainer {
+    width: 100%;
+    padding: 25px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.SubHeaderTitle {
+    margin: 0;
+    font-size: xx-large;
+    text-align: left;
+    top: 15%;
+}
+
+.SubHeaderUsername {
+    font-size: smaller;
+    top: 15%;
+    left: 10%;
+    padding-left: 10px;
+}
+
+.SubHeaderSizer {
+    width: 80%;
+}
