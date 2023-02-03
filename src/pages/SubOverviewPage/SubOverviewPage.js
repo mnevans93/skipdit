@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { show, destroy } from '../../utilities/general-service'
+import { update } from '../../utilities/users-service'
 import SubHeader from '../../components/SubHeader/SubHeader'
 import CreatePostForm from '../../components/CreatePostForm/CreatePostForm'
 import PostList from '../../components/PostList/PostList'
 import SubCard from '../../components/SubCard/SubCard'
 import DeleteModal from '../../components/DeleteCommunityModal/DeleteCommunityModal'
 
-export default function SubOverviewPage({user, updated, setUpdated, handleClick, setLink}) {
+export default function SubOverviewPage({user, setUser, updated, setUpdated, handleClick, setLink}) {
     const [currentSub, setCurrentSub] = useState(null)
     const [error, setError] = useState(null)
     const [match, setMatch] = useState(false)
@@ -21,7 +22,6 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
         try {
             const sub = await show('subskipdits', subName)
             setCurrentSub(sub)
-            console.log(currentSub)
         } catch (e) {
             setError(e)
         }
@@ -38,6 +38,9 @@ export default function SubOverviewPage({user, updated, setUpdated, handleClick,
 
     const deleteSub = async () => {
         try {
+            const index = user.subSkipdits.findIndex((element) => element._id === currentSub._id)
+            user.subSkipdits.splice(index, 1)
+            setUser(await update(user))
             const deleted = await destroy('subskipdits', currentSub._id)
             if (deleted) setLink('/s')
         } catch (error) {

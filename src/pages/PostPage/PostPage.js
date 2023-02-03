@@ -31,7 +31,6 @@ export default function PostPage({user, updated, setUpdated, link, setLink}) {
         } else {
             setMatch(false)
         }
-        console.log(match)
     }
 
     const deletePost = async () => {
