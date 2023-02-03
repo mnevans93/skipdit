@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { show, update } from '../../utilities/general-service'
+import './VoteContainer.scss'
 
 export default function VoteContainer({user, currentPost, setUpdated}) {
   const [error, setError] = useState('')
