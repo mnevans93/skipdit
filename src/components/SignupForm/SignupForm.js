@@ -63,6 +63,6 @@ export default function SignUpForm ({ setUser, handleClick }) {
         <h3 className='logo'>Already have an Account?</h3>
         <Button className='LoginButton' href='/login' onClick={(e) => handleClick(e, '/login')}>Login</Button>
       </Form>
-     </Card>
+    </Card>
   )
 }
