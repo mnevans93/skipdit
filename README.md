@@ -4,17 +4,18 @@
 1. About our App
 2. Deployment
 3. Technologies Used
-4. Collaboration
+4. Future Improvements
+5. Collaboration
 
 ## About our App
 
 Skipdit is a single page application Reddit clone built using the MERN stack.
 Users can sign-up, login, create and join communities, create posts, and comment on others posts.
 
-## Trello
+### Trello
 Trello Board: <a href='https://trello.com/b/5x54yMyX/skipdit-trello'>https://trello.com/b/5x54yMyX/skipdit-trello</a>
 
-## Lucid Chart
+### Lucid Chart
 ![Lucid Flow Chart](https://i.imgur.com/0w8iUh7.png)
 
 ## Deployment
@@ -32,6 +33,18 @@ A list of technologies used within the project:
 * HTML
 * CSS
 * JavaScript
+
+## Future Improvements
+There are a bunch of improvements we'd love to make to the app in the future. Here are some examples:
+
+<ul>
+  <li>Allow users to update info about subs they create, as well as update posts and comments they make</li>
+  <li>Add more user functionality such as a "user page" where they can view and update their information as well as see communities they follow, posts/comments they've made, etc.</li>
+  <li>Make it so a user can only upvote or downvote once</li>
+  <li>Extend upvote functionality to comments</li>
+  <li>Add more functionality to subs like tracking number of members</li>
+  
+</ul>
 
 ## Collaboration
 
