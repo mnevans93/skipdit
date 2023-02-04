@@ -2,22 +2,22 @@ import { useState, useEffect } from 'react'
 import { show } from '../../utilities/general-service'
 import PostListItem from '../PostListItem/PostListItem'
 
-export default function PostList ({user, currentSub, setUpdated, handleClick}) {
+export default function PostList ({ user, currentSub, setUpdated, handleClick }) {
   const [posts, setPosts] = useState(currentSub.subPosts)
-  
+
   useEffect(() => {
     const getPosts = async () => {
-        const foundSub = await show('subskipdits', currentSub._id)
-        setPosts(foundSub.subPosts)
+      const foundSub = await show('subskipdits', currentSub._id)
+      setPosts(foundSub.subPosts)
     }
     getPosts().catch(console.error)
   }, [currentSub])
-  
+
   return (
     <ul className='PostList'>
       {
-        posts.length ?
-          posts.map(post => (
+        posts.length
+          ? posts.map(post => (
             <div key={post._id}>
               <PostListItem
                 user={user}
@@ -32,9 +32,8 @@ export default function PostList ({user, currentSub, setUpdated, handleClick}) {
               />
               <hr />
             </div>
-            ))
-        :
-          <>
+          ))
+          : <>
             <h2>No posts yet. Be the first and start a conversation!</h2>
           </>
       }

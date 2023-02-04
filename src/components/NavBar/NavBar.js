@@ -15,7 +15,7 @@ export default function NavBar ({ user, setUser, link, setLink, navigate, handle
 
   useEffect(() => {
     if (!user) return
-    const items = user.subSkipdits.map((el) => 
+    const items = user.subSkipdits.map((el) =>
       <NavDropdown.Item key={el._id} href={`/s/${el._id}`} onClick={(e) => handleClick(e, `/s/${el._id}`)}>{el.subName}</NavDropdown.Item>
     )
     items.length ? setDropdownSubs(items) : setDropdownSubs(null)
@@ -30,26 +30,24 @@ export default function NavBar ({ user, setUser, link, setLink, navigate, handle
 
   return (
     <div className='main-nav'>
-      <Navbar bg="light" variant="light">
+      <Navbar bg='light' variant='light'>
         <Container className='NavBarContainer'>
           <Navbar.Brand className='logo' href='/' onClick={(e) => handleClick(e, '/')}>skipdit</Navbar.Brand>
           <div>
-            <Nav className="me-auto">
+            <Nav className='me-auto'>
               <Nav.Link href='/' onClick={(e) => handleClick(e, '/')}>Explore Communities</Nav.Link>
-              {user ?
-                <>
+              {user
+                ? <>
                   <Nav.Link href='/s/new' onClick={(e) => handleClick(e, '/s/new')}>Create a Community</Nav.Link>
-                  <NavDropdown title="Your Communities" id="navbarScrollingDropdown">
-                    {dropdownSubs ? dropdownSubs : <NavDropdown.Item>None yet!</NavDropdown.Item>}
+                  <NavDropdown title='Your Communities' id='navbarScrollingDropdown'>
+                    {dropdownSubs || <NavDropdown.Item>None yet!</NavDropdown.Item>}
                   </NavDropdown>
                   <Nav.Link href='/' onClick={(e) => handleLogout(e)}>Logout</Nav.Link>
                 </>
-              :
-                <>
+                : <>
                   <Nav.Link href='/login' onClick={(e) => handleClick(e, '/login')}>Login</Nav.Link>
                   <Nav.Link href='/signup' onClick={(e) => handleClick(e, '/signup')}>Sign Up</Nav.Link>
-                </>
-              }
+                </>}
             </Nav>
           </div>
         </Container>
