@@ -1,38 +1,40 @@
-### Skipdit
-***
-## Table of Contents
-1. [ About our App ] 
-2. [ How to Install ]
-3. [ Technologies Used ]
-4. [ Collaboration ]
+# Skipdit App
 
-### About our Skipdit
-***
-Skipdit is a single page application Reddit clone built using the MERN stack. 
-Users can sign-up, login, create and join communities, create posts, and comment on others posts. 
+## Table of Contents
+1. About our App
+2. Deployment
+3. Technologies Used
+4. Collaboration
+
+## About our App
+
+Skipdit is a single page application Reddit clone built using the MERN stack.
+Users can sign-up, login, create and join communities, create posts, and comment on others posts.
+
 ## Trello
-* [Trello](https://trello.com/b/5x54yMyX/skipdit-trello)
+Trello Board: <a href='https://trello.com/b/5x54yMyX/skipdit-trello'>https://trello.com/b/5x54yMyX/skipdit-trello</a>
+
 ## Lucid Chart
 ![Lucid Flow Chart](https://i.imgur.com/0w8iUh7.png)
 
-### How to Install
-***
-# TBD
+## Deployment
 
-### Technologies
-***
+Head to Heroku to use the live app : <a href='https://skipdit.herokuapp.com/'>https://skipdit.herokuapp.com/</a>
+
+## Technologies
+
 A list of technologies used within the project:
-* [ HTML ]
-* [ CSS ]
-* [ JavaScript ]
-* [ MongoDB ]
-* [ Express ]
-* [ Bootstrap ]
-* [ React ]
-* [ MERN stack ]
+* React
+* Express
+* Bootstrap
+* MongoDB
+* Node.js
+* HTML
+* CSS
+* JavaScript
 
-### Collaboration
-***
+## Collaboration
+
 * [Matthias Nevans](https://github.com/mnevans93)
 * [Seth Neal](https://github.com/sonic11829)
 * [Dylan Page](https://github.com/dylanpage82)
