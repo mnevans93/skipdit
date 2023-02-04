@@ -34,7 +34,7 @@ export default function LoginForm ({ setUser, handleClick }) {
 
   return (
     <Card className='LoginForm'>
-      <h1 className='logo'>Welcome back!</h1> 
+      <h1 className='logo'>Welcome back!</h1>
       <h1 className='logo'>Sign in below to pick up where you left off.</h1>
       <br />
       <Form className='text-center' onSubmit={handleSubmit}>
@@ -47,7 +47,7 @@ export default function LoginForm ({ setUser, handleClick }) {
         <Button variant='primary' type='submit' disabled={disable}>Log In</Button>
         <br /><p className='error-message'>&nbsp;{error}</p>
         <h3 className='SignUpHeader logo'>New to Skipdit?</h3>
-      <Button href='/signup' onClick={(e) => handleClick(e, '/signup')}>Sign Up</Button>
+        <Button href='/signup' onClick={(e) => handleClick(e, '/signup')}>Sign Up</Button>
       </Form>
     </Card>
   )

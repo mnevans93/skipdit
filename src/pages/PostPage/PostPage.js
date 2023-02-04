@@ -7,46 +7,46 @@ import Card from 'react-bootstrap/Card'
 import './PostPage.scss'
 import DeleteModal from '../../components/DeletePostModal/DeletePostModal'
 
-export default function PostPage({user, updated, setUpdated, link, setLink}) {
-    const [currentPost, setCurrentPost] = useState(null)
-    const [error, setError] = useState(null)
-    const [match, setMatch] = useState(false)
-    const {subName, postId} = useParams()
+export default function PostPage ({ user, updated, setUpdated, link, setLink }) {
+  const [currentPost, setCurrentPost] = useState(null)
+  const [error, setError] = useState(null)
+  const [match, setMatch] = useState(false)
+  const { subName, postId } = useParams()
 
-    const [showModal, setShowModal] = useState(false)
-    const handleClose = () => setShowModal(false)
-    const handleShow = () => setShowModal(true)
+  const [showModal, setShowModal] = useState(false)
+  const handleClose = () => setShowModal(false)
+  const handleShow = () => setShowModal(true)
 
-    const getPost = async () => {
-        try {
-            const post = await show('posts', postId)
-            setCurrentPost(post)
-        } catch (e) {
-            setError(e)
-        }
+  const getPost = async () => {
+    try {
+      const post = await show('posts', postId)
+      setCurrentPost(post)
+    } catch (e) {
+      setError(e)
     }
+  }
 
-    const checkUser = () => {
-        if (!user || !currentPost) return null
-        if (currentPost.postOwner.username === user.username) {
-            setMatch(true)
-        } else {
-            setMatch(false)
-        }
+  const checkUser = () => {
+    if (!user || !currentPost) return null
+    if (currentPost.postOwner.username === user.username) {
+      setMatch(true)
+    } else {
+      setMatch(false)
     }
+  }
 
-    const deletePost = async () => {
-        try {
-            const deleted = await destroy('posts', currentPost._id)
-            if (deleted) setLink(`/s/${subName}`)
-        } catch (error) {
-            console.error(error)
-        }
+  const deletePost = async () => {
+    try {
+      const deleted = await destroy('posts', currentPost._id)
+      if (deleted) setLink(`/s/${subName}`)
+    } catch (error) {
+      console.error(error)
     }
+  }
 
-    useEffect(() => {
-        getPost()
-    }, [updated, link])
+  useEffect(() => {
+    getPost()
+  }, [updated, link])
 
     useEffect(() =>{
         checkUser()
@@ -84,5 +84,12 @@ export default function PostPage({user, updated, setUpdated, link, setLink}) {
                     <Card.Title>Loading...</Card.Title>
                 </Card>
             </div>
-    )
+          </Card>
+        </div>
+        : <div className='CurrentPostPageError'>
+          <Card className='ErrorCard'>
+            <Card.Title>Loading...</Card.Title>
+          </Card>
+        </div>
+  )
 }
