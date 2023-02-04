@@ -30,7 +30,7 @@ export default function App() {
             user.subSkipdits.push(subId)
             setUser(await update(user))
         } else {
-            const index = user.subSkipdits.findIndex((element) => element === subId)
+            const index = user.subSkipdits.findIndex((element) => element._id === subId)
             user.subSkipdits.splice(index, 1)
             setUser(await update(user))
         }
